@@ -1,0 +1,98 @@
+{
+  "@@last_modified": "2020-05-21T17:15:46.390611",
+  "simpleText": "Просто текс",
+  "@simpleText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "signIn": "Войти",
+  "@signIn": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "emptyField":"Поле не может быть пустым",
+   "@emptyField":{
+      "type":"text",
+       "placeholders": {}
+  },
+  "password": "Пароль",
+  "@password": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "login": "Логин",
+  "@login": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "remember": "Запомнить",
+  "@remember": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "help": "Помощь",
+  "@help": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "setCurrentLogin": "Укажите корректный Логин",
+  "@setCurrentLogin": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordContainsInvalidCharacters": "Пароль содержит недопустимые символы",
+  "@passwordContainsInvalidCharacters": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "correspondent": "Корреспондент",
+  "@correspondent": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "backToTaskList": "Список задач",
+  "@backToTaskList": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "error": "Ошибка",
+  "@error": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ok": "Окей",
+  "@ok": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "skip": "Пропустить",
+  "@skip": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "moveAndAccumulateSteps": "Двигайся\nи накапливай шаги",
+  "@moveAndAccumulateSteps": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "allStepsAreSetOff": "Все шаги идут\nв зачет",
+  "@allStepsAreSetOff": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "teamVictoryYourVictory": "Победа команды —\nтвоя победа!",
+  "@teamVictoryYourVictory": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "allStepsAreConvertedIntoRublesAndGoToACharityFund": "Все шаги конвертируются в рубли\nи идут в благотворительный фонд",
+  "@allStepsAreConvertedIntoRublesAndGoToACharityFund": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "together": "Все вместе",
+  "@together": {
+    "type": "text",
+    "placeholders": {}
+  }
+}

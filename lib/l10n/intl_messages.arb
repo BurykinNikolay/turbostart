@@ -1,0 +1,98 @@
+{
+  "@@last_modified": "2020-06-23T20:32:50.434767",
+  "simpleText": "Simple Text",
+  "@simpleText": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "signIn": "Sign In",
+  "@signIn": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "emptyField": "The field cannot be empty",
+  "@emptyField": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "password": "Password",
+  "@password": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "login": "Login",
+  "@login": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "remember": "Remember",
+  "@remember": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "help": "Help",
+  "@help": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "setCurrentLogin": "Set current Login",
+  "@setCurrentLogin": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordContainsInvalidCharacters": "Password contains invalid characters",
+  "@passwordContainsInvalidCharacters": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "correspondent": "Correspondent",
+  "@correspondent": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "backToTaskList": "Back to task list",
+  "@backToTaskList": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "error": "Error",
+  "@error": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "ok": "Ok",
+  "@ok": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "skip": "Skip",
+  "@skip": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "moveAndAccumulateSteps": "Move and accumulate steps",
+  "@moveAndAccumulateSteps": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "allStepsAreSetOff": "All steps are set off",
+  "@allStepsAreSetOff": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "teamVictoryYourVictory": "Team victory — your victory!",
+  "@teamVictoryYourVictory": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "allStepsAreConvertedIntoRublesAndGoToACharityFund": "All steps are converted into rubles and go to a charity fund",
+  "@allStepsAreConvertedIntoRublesAndGoToACharityFund": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "together": "Together",
+  "@together": {
+    "type": "text",
+    "placeholders": {}
+  }
+}
