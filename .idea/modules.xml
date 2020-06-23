@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/turbostart.iml" filepath="$PROJECT_DIR$/turbostart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/turbostart_android.iml" filepath="$PROJECT_DIR$/android/turbostart_android.iml" />
+    </modules>
+  </component>
+</project>
