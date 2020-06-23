@@ -139,97 +139,98 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
     );
 
     return Material(
-      child: Column(
-        children: [
-          SizedBox(height: 50),
-          Image.asset('assets/5k_logo.png', width: 140.0),
-          SizedBox(height: 150),
-          Expanded(
-            child: Stack(
-              children: [
-                Positioned(
-                  top: 55,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    height: 180,
-                    child: BackgroundCircules(
-                      contorller: _parallaxController,
-                    ),
-                  ),
-                ),
-                IntroductionScreen(
-                  globalBackgroundColor: Colors.transparent,
-                  pages: [
-                    PageViewModel(
-                      title: localization.moveAndAccumulateSteps,
-                      body: "",
-                      image: _buildSneakers('sneakers', theme.mainGreen),
-                      decoration: pageDecoration,
-                    ),
-                    PageViewModel(
-                      title: localization.allStepsAreSetOff,
-                      body: "",
-                      image: _buildBracelet('bracelet', theme.darkGreen),
-                      decoration: pageDecoration,
-                    ),
-                    PageViewModel(
-                      title: localization.teamVictoryYourVictory,
-                      bodyWidget: RichText(
-                        textAlign: TextAlign.center,
-                        text: TextSpan(
-                          text: localization.allStepsAreConvertedIntoRublesAndGoToACharityFund,
-                          style: theme.descriptionStyle,
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: '\n' + localization.together,
-                              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
-                            ),
-                          ],
-                        ),
+      color: theme.white,
+      child: SafeArea(
+        child: Column(
+          children: [
+            Image.asset('assets/5k_logo.png', width: 140.0),
+            SizedBox(height: 150),
+            Expanded(
+              child: Stack(
+                children: [
+                  Positioned(
+                    top: 40,
+                    left: 0,
+                    right: 0,
+                    child: Container(
+                      height: 180,
+                      child: BackgroundCircules(
+                        contorller: _parallaxController,
                       ),
-                      //  body: localization.allStepsAreConvertedIntoRublesAndGoToACharityFund,
-                      image: _buildGlove('glove', theme.red),
-                      decoration: pageDecoration,
-                    ),
-                  ],
-                  onDone: () {
-                    print("end");
-                  },
-                  showSkipButton: false,
-                  showNextButton: false,
-                  skipFlex: 0,
-                  nextFlex: 0,
-                  done: Container(),
-                  dotsDecorator: const DotsDecorator(
-                    size: Size(7.0, 7.0),
-                    color: theme.mainGreen,
-                    activeColor: theme.mainGreen,
-                    activeSize: Size(19.0, 7.0),
-                    spacing: EdgeInsets.only(left: 2.5, right: 2.5),
-                    activeShape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(25.0)),
                     ),
                   ),
-                  onChange: (int index) {
-                    _parallaxController.animateTo(index * 100.0, duration: Duration(milliseconds: 300), curve: Curves.linear);
-                  },
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            onTap: () => print("bloc.end"),
-            child: Container(
-              color: Colors.transparent,
-              child: Text(
-                localization.skip.toUpperCase(),
-                style: theme.normalGreyOpacity18,
+                  IntroductionScreen(
+                    globalBackgroundColor: Colors.transparent,
+                    pages: [
+                      PageViewModel(
+                        title: localization.moveAndAccumulateSteps,
+                        body: "",
+                        image: _buildSneakers('sneakers', theme.mainGreen),
+                        decoration: pageDecoration,
+                      ),
+                      PageViewModel(
+                        title: localization.allStepsAreSetOff,
+                        body: "",
+                        image: _buildBracelet('bracelet', theme.darkGreen),
+                        decoration: pageDecoration,
+                      ),
+                      PageViewModel(
+                        title: localization.teamVictoryYourVictory,
+                        bodyWidget: RichText(
+                          textAlign: TextAlign.center,
+                          text: TextSpan(
+                            text: localization.allStepsAreConvertedIntoRublesAndGoToACharityFund,
+                            style: theme.descriptionStyle,
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: '\n' + localization.together,
+                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                              ),
+                            ],
+                          ),
+                        ),
+                        //  body: localization.allStepsAreConvertedIntoRublesAndGoToACharityFund,
+                        image: _buildGlove('glove', theme.red),
+                        decoration: pageDecoration,
+                      ),
+                    ],
+                    onDone: () {
+                      print("end");
+                    },
+                    showSkipButton: false,
+                    showNextButton: false,
+                    skipFlex: 0,
+                    nextFlex: 0,
+                    done: Container(),
+                    dotsDecorator: const DotsDecorator(
+                      size: Size(7.0, 7.0),
+                      color: theme.mainGreen,
+                      activeColor: theme.mainGreen,
+                      activeSize: Size(19.0, 7.0),
+                      spacing: EdgeInsets.only(left: 2.5, right: 2.5),
+                      activeShape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(25.0)),
+                      ),
+                    ),
+                    onChange: (int index) {
+                      _parallaxController.animateTo(index * 100.0, duration: Duration(milliseconds: 300), curve: Curves.linear);
+                    },
+                  ),
+                ],
               ),
             ),
-          ),
-          SizedBox(height: 64),
-        ],
+            GestureDetector(
+              onTap: () => print("bloc.end"),
+              child: Container(
+                color: Colors.transparent,
+                child: Text(
+                  localization.skip.toUpperCase(),
+                  style: theme.normalGreyOpacity18,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
