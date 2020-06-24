@@ -21,24 +21,31 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "afterRegister" : MessageLookupByLibrary.simpleMessage("После регистрации вы сможете\nавторизоваться в приложении"),
     "allStepsAreConvertedIntoRublesAndGoToACharityFund" : MessageLookupByLibrary.simpleMessage("Все шаги конвертируются в рубли\nи идут в благотворительный фонд"),
     "allStepsAreSetOff" : MessageLookupByLibrary.simpleMessage("Все шаги идут\nв зачет"),
+    "auth" : MessageLookupByLibrary.simpleMessage("АВТОРИЗАЦИЯ"),
     "backToTaskList" : MessageLookupByLibrary.simpleMessage("Список задач"),
     "correspondent" : MessageLookupByLibrary.simpleMessage("Корреспондент"),
     "emptyField" : MessageLookupByLibrary.simpleMessage("Поле не может быть пустым"),
     "error" : MessageLookupByLibrary.simpleMessage("Ошибка"),
+    "forgotPassword" : MessageLookupByLibrary.simpleMessage("Забыли пароль?"),
+    "haveAProblem" : MessageLookupByLibrary.simpleMessage("Возникли проблемы?"),
     "help" : MessageLookupByLibrary.simpleMessage("Помощь"),
-    "login" : MessageLookupByLibrary.simpleMessage("Логин"),
+    "login" : MessageLookupByLibrary.simpleMessage("ВОЙТИ"),
     "moveAndAccumulateSteps" : MessageLookupByLibrary.simpleMessage("Двигайся\nи накапливай шаги"),
     "ok" : MessageLookupByLibrary.simpleMessage("Окей"),
     "password" : MessageLookupByLibrary.simpleMessage("Пароль"),
     "passwordContainsInvalidCharacters" : MessageLookupByLibrary.simpleMessage("Пароль содержит недопустимые символы"),
+    "processOfRegister" : MessageLookupByLibrary.simpleMessage("Процесс регистрации проходит\nна сайте: турбостарты.рф"),
+    "register" : MessageLookupByLibrary.simpleMessage("РЕГИСТРАЦИЯ"),
     "remember" : MessageLookupByLibrary.simpleMessage("Запомнить"),
     "setCurrentLogin" : MessageLookupByLibrary.simpleMessage("Укажите корректный Логин"),
     "signIn" : MessageLookupByLibrary.simpleMessage("Войти"),
     "simpleText" : MessageLookupByLibrary.simpleMessage("Просто текс"),
     "skip" : MessageLookupByLibrary.simpleMessage("Пропустить"),
     "teamVictoryYourVictory" : MessageLookupByLibrary.simpleMessage("Победа команды —\nтвоя победа!"),
-    "together" : MessageLookupByLibrary.simpleMessage("Все вместе")
+    "together" : MessageLookupByLibrary.simpleMessage("Все вместе"),
+    "turbostarts" : MessageLookupByLibrary.simpleMessage("ТУРБО\nСТАРТЫ")
   };
 }

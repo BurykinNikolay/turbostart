@@ -10,14 +10,20 @@ class _$AppState extends AppState {
   @override
   final AppTab activeTab;
   @override
+  final NavigationState navigationState;
+  @override
   final AppTheme appTheme;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.activeTab, this.appTheme}) : super._() {
+  _$AppState._({this.activeTab, this.navigationState, this.appTheme})
+      : super._() {
     if (activeTab == null) {
       throw new BuiltValueNullFieldError('AppState', 'activeTab');
+    }
+    if (navigationState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'navigationState');
     }
     if (appTheme == null) {
       throw new BuiltValueNullFieldError('AppState', 'appTheme');
@@ -36,18 +42,21 @@ class _$AppState extends AppState {
     if (identical(other, this)) return true;
     return other is AppState &&
         activeTab == other.activeTab &&
+        navigationState == other.navigationState &&
         appTheme == other.appTheme;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, activeTab.hashCode), appTheme.hashCode));
+    return $jf($jc($jc($jc(0, activeTab.hashCode), navigationState.hashCode),
+        appTheme.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
           ..add('activeTab', activeTab)
+          ..add('navigationState', navigationState)
           ..add('appTheme', appTheme))
         .toString();
   }
@@ -60,6 +69,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   AppTab get activeTab => _$this._activeTab;
   set activeTab(AppTab activeTab) => _$this._activeTab = activeTab;
 
+  NavigationStateBuilder _navigationState;
+  NavigationStateBuilder get navigationState =>
+      _$this._navigationState ??= new NavigationStateBuilder();
+  set navigationState(NavigationStateBuilder navigationState) =>
+      _$this._navigationState = navigationState;
+
   AppTheme _appTheme;
   AppTheme get appTheme => _$this._appTheme;
   set appTheme(AppTheme appTheme) => _$this._appTheme = appTheme;
@@ -69,6 +84,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   AppStateBuilder get _$this {
     if (_$v != null) {
       _activeTab = _$v.activeTab;
+      _navigationState = _$v.navigationState?.toBuilder();
       _appTheme = _$v.appTheme;
       _$v = null;
     }
@@ -90,8 +106,24 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
 
   @override
   _$AppState build() {
-    final _$result =
-        _$v ?? new _$AppState._(activeTab: activeTab, appTheme: appTheme);
+    _$AppState _$result;
+    try {
+      _$result = _$v ??
+          new _$AppState._(
+              activeTab: activeTab,
+              navigationState: navigationState.build(),
+              appTheme: appTheme);
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'navigationState';
+        navigationState.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'AppState', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

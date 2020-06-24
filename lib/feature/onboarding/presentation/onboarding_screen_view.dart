@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:turbostart/l10n/localizations.dart';
 import 'package:turbostart/other/theme.dart' as theme;
 
 import 'package:introduction_screen/introduction_screen.dart';
 
+import 'onboarding_screen_bloc.dart';
 import 'widgets/background_circules.dart';
 
 class OnboardingScreenView extends StatefulWidget {
@@ -12,6 +14,8 @@ class OnboardingScreenView extends StatefulWidget {
 }
 
 class _OnboardingScreenViewState extends State<OnboardingScreenView> {
+  OnboardingScreenBloc get bloc => Provider.of<OnboardingScreenBloc>(context);
+
   final _parallaxController = ScrollController();
   Widget _buildSneakers(String assetName, Color backgroundColor) {
     return Stack(

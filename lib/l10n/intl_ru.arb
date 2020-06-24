@@ -20,7 +20,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "login": "Логин",
+  "login": "ВОЙТИ",
   "@login": {
     "type": "text",
     "placeholders": {}
@@ -92,6 +92,46 @@
   },
   "together": "Все вместе",
   "@together": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "turbostarts": "ТУРБО\nСТАРТЫ",
+  "@turbostarts": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "auth": "АВТОРИЗАЦИЯ",
+  "@auth": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "register": "РЕГИСТРАЦИЯ",
+  "@register": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "processOfRegister": "Процесс регистрации проходит\nна сайте: турбостарты.рф",
+  "@processOfRegister": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "afterRegister": "После регистрации вы сможете\nавторизоваться в приложении",
+  "@afterRegister": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "haveAProblem": "Возникли проблемы?",
+  "@haveAProblem": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "forgotPassword": "Забыли пароль?",
+  "@forgotPassword": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "email": "Email",
+  "@email": {
     "type": "text",
     "placeholders": {}
   }
