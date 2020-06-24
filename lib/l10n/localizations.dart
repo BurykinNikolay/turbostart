@@ -98,6 +98,38 @@ class AppLocalizations {
   String get together {
     return Intl.message('Together', name: 'together');
   }
+
+  String get turbostarts {
+    return Intl.message('Turbostarts', name: 'turbostarts');
+  }
+
+  String get auth {
+    return Intl.message('Auth', name: 'auth');
+  }
+
+  String get register {
+    return Intl.message('Register', name: 'register');
+  }
+
+  String get processOfRegister {
+    return Intl.message('Process of register', name: 'processOfRegister');
+  }
+
+  String get afterRegister {
+    return Intl.message('After register', name: 'afterRegister');
+  }
+
+  String get haveAProblem {
+    return Intl.message('Have a problem?', name: 'haveAProblem');
+  }
+
+  String get forgotPassword {
+    return Intl.message('Forgot password?', name: 'forgotPassword');
+  }
+
+  String get email {
+    return Intl.message('Email', name: 'email');
+  }
 }
 
 /// Used to provide resources to app

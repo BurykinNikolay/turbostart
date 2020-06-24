@@ -18,10 +18,14 @@ class _$AppActions extends AppActions {
   final updateTab = ActionDispatcher<AppTab>('AppActions-updateTab');
   final setAppTheme = ActionDispatcher<AppTheme>('AppActions-setAppTheme');
 
+  final navigation = NavigationActions();
+
   @override
   void setDispatcher(Dispatcher dispatcher) {
     updateTab.setDispatcher(dispatcher);
     setAppTheme.setDispatcher(dispatcher);
+
+    navigation.setDispatcher(dispatcher);
   }
 }
 

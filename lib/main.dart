@@ -4,11 +4,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_built_redux/flutter_built_redux.dart';
-import 'package:turbostart/feature/onboarding/onboarding.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'di/di_container.dart';
 import 'domain/domain.dart';
+import 'feature/auth/presentation/auth_screen.dart';
 import 'l10n/localizations.dart';
 import 'other/theme.dart';
 
@@ -44,6 +44,7 @@ class _MyAppState extends State<MyApp> {
       child: StoreConnection<AppState, AppActions, AppTheme>(
         connect: (appState) => appState.appTheme,
         builder: (ctx, appTheme, actions) => MaterialApp(
+          navigatorKey: store.state.navigationState.rootNavigatorKey,
           title: 'Turbostart',
           theme: appTheme == AppTheme.dark ? darkTheme(context) : lightTheme(context),
           localizationsDelegates: [
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
             Locale('ru'),
             // Locale("en"),
           ],
-          home: OnboardingScreen(),
+          home: AuthScreen(),
         ),
       ),
     );
