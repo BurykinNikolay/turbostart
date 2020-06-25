@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:turbostart/other/theme.dart' as theme;
 
-import 'keyboard_placer.dart';
 
 class TurboBottomSheet extends StatefulWidget {
   TurboBottomSheet({@required this.body, this.needHeader = true});
