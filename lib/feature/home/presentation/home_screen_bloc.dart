@@ -4,7 +4,7 @@ import 'package:turbostart/domain/domain.dart';
 import 'package:turbostart/domain/models/models.dart';
 import 'package:turbostart/presentation/base/base_bloc.dart';
 
-class HomeBloc extends BaseBloc {
+class HomeScreenBloc extends BaseBloc {
   AppTab get activeTab => store.state.activeTab;
   AppTheme get appTheme => store.state.appTheme;
 

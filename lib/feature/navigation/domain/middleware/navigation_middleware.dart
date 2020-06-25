@@ -3,6 +3,7 @@ import 'package:turbostart/domain/domain.dart';
 
 import 'package:flutter/cupertino.dart' hide Action;
 import 'package:flutter/material.dart' hide Action;
+import 'package:turbostart/feature/home/home.dart';
 import 'package:turbostart/feature/onboarding/onboarding.dart';
 
 import '../../navigation.dart';
@@ -22,23 +23,19 @@ void routeTo(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHan
 
   switch (payload.route) {
     case Routes.home:
-      rootNavigator.pushReplacement(
-        CupertinoPageRoute(
-          settings: RouteSettings(name: Routes.home),
-          builder: (context) {
-            return Container();
-          },
-        ),
+      await rootNavigator.pushAndRemoveUntil(
+        CupertinoPageRoute(builder: (context) => HomeScreen(), settings: RouteSettings(name: Routes.home)),
+        (route) {
+          return false;
+        },
       );
       break;
     case Routes.onboarding:
-      rootNavigator.pushReplacement(
-        CupertinoPageRoute(
-          settings: RouteSettings(name: Routes.home),
-          builder: (context) {
-            return OnboardingScreen();
-          },
-        ),
+      await rootNavigator.pushAndRemoveUntil(
+        CupertinoPageRoute(builder: (context) => OnboardingScreen(), settings: RouteSettings(name: Routes.onboarding)),
+        (route) {
+          return false;
+        },
       );
       break;
     case Routes.pop:

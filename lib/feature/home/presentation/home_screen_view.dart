@@ -1,27 +1,31 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:turbostart/domain/models/app_tab.dart';
-import 'package:turbostart/domain/models/app_theme.dart';
-import 'package:turbostart/other/buisness_card_icons.dart';
-import 'package:turbostart/presentation/about/about.dart';
-import 'package:turbostart/presentation/home/components/tab_icon.dart';
+import 'package:turbostart/feature/profile/profile.dart';
 
-import 'home_bloc.dart';
-import 'home_bloc_injector.dart';
+import 'package:turbostart/other/theme.dart' as theme;
 
-class HomeView extends StatefulWidget {
+import 'components/tab_icon.dart';
+import 'components/turbostart_tab_bar.dart';
+import 'home_screen_bloc.dart';
+
+class HomeScreenView extends StatefulWidget {
   @override
-  _HomeViewState createState() => _HomeViewState();
+  _HomeScreenViewState createState() => _HomeScreenViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
-  HomeBloc get bloc => HomeBlocInjector.of(context).bloc;
+class _HomeScreenViewState extends State<HomeScreenView> {
+  HomeScreenBloc get bloc => Provider.of<HomeScreenBloc>(context);
 
   final List<Widget> _pagesList = [
-    About(),
     Center(
-      child: Text("Page in Progress"),
+      child: Text(
+        "Page in Progress",
+        style: theme.boldWhite36,
+      ),
     ),
+    ProfileScreen(),
   ];
 
   @override
@@ -29,20 +33,6 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: _buildTabBar(),
-      appBar: AppBar(
-        actions: <Widget>[
-          StreamBuilder<AppTheme>(
-            stream: bloc.currentThemeStream,
-            initialData: bloc.appTheme,
-            builder: (context, snapshot) {
-              return IconButton(
-                icon: Icon(snapshot.data == AppTheme.light ? Icons.wb_sunny : BuisnessCardIcons.moon),
-                onPressed: () => bloc.updateTheme(),
-              );
-            },
-          ),
-        ],
-      ),
       body: StreamBuilder<AppTab>(
         initialData: bloc.activeTab,
         stream: bloc.currentPageStream,
@@ -59,7 +49,8 @@ class _HomeViewState extends State<HomeView> {
       stream: bloc.currentPageStream,
       builder: (context, snapshot) {
         final currentIndex = AppTab.toIndex(snapshot.data);
-        return CupertinoTabBar(
+        return TurbostartTabBar(
+          backgroundColor: theme.lightGray,
           currentIndex: currentIndex,
           items: _buildItems(currentIndex),
           onTap: (int index) {

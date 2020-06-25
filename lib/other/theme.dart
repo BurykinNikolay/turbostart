@@ -43,6 +43,7 @@ const Color red = Color(0xFFEB1E10);
 const Color black = Color(0xFF161616);
 const Color black20 = Color(0x33161616);
 const Color gray = Color(0xFF868686);
+const Color lightGray = Color(0xFFF9F9F9);
 
 ///styles
 
@@ -53,6 +54,8 @@ const TextStyle standartStyleOpacity = TextStyle(fontSize: 18, color: black20);
 const TextStyle normalGreyOpacity18 = TextStyle(fontSize: 18, color: gray);
 const TextStyle normalWhite18 = TextStyle(fontSize: 18, color: white);
 const TextStyle normalWhite16 = TextStyle(fontSize: 18, color: white);
+const TextStyle normalGreen12 = TextStyle(fontSize: 12, color: mainGreen);
+const TextStyle normalBlack12 = TextStyle(fontSize: 12, color: black);
 
 const TextStyle boldWhite36 = TextStyle(fontSize: 36, color: white, fontWeight: FontWeight.w800);
 const TextStyle boldWhite18 = TextStyle(fontSize: 18, color: white, fontWeight: FontWeight.w800);
