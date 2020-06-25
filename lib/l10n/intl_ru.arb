@@ -134,5 +134,40 @@
   "@email": {
     "type": "text",
     "placeholders": {}
+  },
+  "profile": "Профиль",
+  "@profile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "rating": "Рейтинг",
+  "@rating": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "macroregion": "Макрорегион",
+  "@macroregion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "myMacroregion": "Мой макрорегион",
+  "@myMacroregion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "place": "место",
+  "@place": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "placeInGeneralSetOff": "место в общем зачете",
+  "@placeInGeneralSetOff": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pedometer": "Шагометр",
+  "@pedometer": {
+    "type": "text",
+    "placeholders": {}
   }
 }

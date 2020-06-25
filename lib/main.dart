@@ -9,6 +9,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'di/di_container.dart';
 import 'domain/domain.dart';
 import 'feature/auth/presentation/auth_screen.dart';
+import 'feature/profile/profile.dart';
 import 'l10n/localizations.dart';
 import 'other/theme.dart';
 
@@ -57,7 +58,7 @@ class _MyAppState extends State<MyApp> {
             Locale('ru'),
             // Locale("en"),
           ],
-          home: AuthScreen(),
+          home: ProfileScreen(),
         ),
       ),
     );

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2020-06-24T17:36:24.375075",
+  "@@last_modified": "2020-06-25T12:15:57.370524",
   "simpleText": "Simple Text",
   "@simpleText": {
     "type": "text",
@@ -132,6 +132,41 @@
   },
   "email": "Email",
   "@email": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "profile": "Profile",
+  "@profile": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "rating": "Rating",
+  "@rating": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "macroregion": "Macroregion",
+  "@macroregion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "myMacroregion": "My macroregion",
+  "@myMacroregion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "place": "Place",
+  "@place": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "placeInGeneralSetOff": "place in general set-off",
+  "@placeInGeneralSetOff": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "pedometer": "Pedometer",
+  "@pedometer": {
     "type": "text",
     "placeholders": {}
   }

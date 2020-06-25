@@ -130,6 +130,34 @@ class AppLocalizations {
   String get email {
     return Intl.message('Email', name: 'email');
   }
+
+  String get profile {
+    return Intl.message('Profile', name: 'profile');
+  }
+
+  String get rating {
+    return Intl.message('Rating', name: 'rating');
+  }
+
+  String get macroregion {
+    return Intl.message('Macroregion', name: 'macroregion');
+  }
+
+  String get myMacroregion {
+    return Intl.message('My macroregion', name: 'myMacroregion');
+  }
+
+  String get place {
+    return Intl.message('Place', name: 'place');
+  }
+
+  String get placeInGeneralSetOff {
+    return Intl.message('place in general set-off', name: 'placeInGeneralSetOff');
+  }
+
+  String get pedometer {
+    return Intl.message('Pedometer', name: 'pedometer');
+  }
 }
 
 /// Used to provide resources to app
