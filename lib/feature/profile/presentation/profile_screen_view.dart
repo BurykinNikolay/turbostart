@@ -5,6 +5,7 @@ import 'package:turbostart/feature/profile/presentation/widgets/participants_pla
 import 'package:turbostart/l10n/localizations.dart';
 
 import 'package:turbostart/other/theme.dart' as theme;
+import 'package:turbostart/other/turbostart_icons.dart';
 
 import 'profile_screen_bloc.dart';
 
@@ -39,7 +40,7 @@ class _ProfileScreenViewState extends State<ProfileScreenView> {
           Padding(
             padding: const EdgeInsets.only(right: 15),
             child: Icon(
-              Icons.exit_to_app,
+              TurbostartIcons.logout,
               color: theme.red,
             ),
           )

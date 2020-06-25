@@ -76,9 +76,9 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: BuisnessCard
+    - family: turbostart
       fonts:
-        - asset: assets/icons/buisness_card.ttf
+        - asset: assets/icons/turbostart_icons.ttf
   #   - family: Trajan Pro
   #     fonts:
   #       - asset: fonts/TrajanPro.ttf

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:turbostart/l10n/localizations.dart';
 import 'package:turbostart/other/theme.dart' as theme;
+import 'package:turbostart/other/turbostart_icons.dart';
 import 'package:turbostart/ui_library/library.dart';
 
 import '../auth_screen_bloc.dart';
@@ -34,11 +35,7 @@ class _RegisterSheetView extends StatelessWidget {
             width: 44,
             height: 44,
             child: Center(
-              child: Image.asset(
-                'lib/feature/auth/assets/alarm.png',
-                width: 10,
-                height: 25,
-              ),
+              child: Icon(TurbostartIcons.alarm, color: theme.mainGreen,)
             ),
           ),
           SizedBox(width: 13.0),

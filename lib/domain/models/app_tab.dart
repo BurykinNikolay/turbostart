@@ -3,7 +3,7 @@ library app_tab;
 import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:flutter/material.dart';
-import 'package:turbostart/other/buisness_card_icons.dart';
+import 'package:turbostart/other/turbostart_icons.dart';
 
 part 'app_tab.g.dart';
 
@@ -42,9 +42,9 @@ class AppTab extends EnumClass {
   static IconData activeIconByTab(AppTab tab) {
     switch (tab) {
       case AppTab.pedometer:
-        return BuisnessCardIcons.apps;
+        return TurbostartIcons.pedometer;
       case AppTab.profile:
-        return BuisnessCardIcons.user;
+        return TurbostartIcons.profile;
 
       default:
         return null;
@@ -54,9 +54,9 @@ class AppTab extends EnumClass {
   static IconData passiveIconByTab(AppTab tab) {
     switch (tab) {
       case AppTab.pedometer:
-        return BuisnessCardIcons.apps;
+        return TurbostartIcons.pedometer;
       case AppTab.profile:
-        return BuisnessCardIcons.user;
+        return TurbostartIcons.profile;
       default:
         return null;
     }

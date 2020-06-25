@@ -23,14 +23,12 @@
 ///
 import 'package:flutter/widgets.dart';
 
-class BuisnessCardIcons {
-  BuisnessCardIcons._();
-  static const _kFontFam = 'BuisnessCard';
+class TurbostartIcons {
+  TurbostartIcons._();
+  static const _kFontFam = 'turbostart';
   static const _kFontPkg = null;
-  static const IconData user = IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData apps = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData githubCircled = IconData(0xf09b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData instagram = IconData(0xf16d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData moon = IconData(0xf186, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData linkedinSquared = IconData(0xf30c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData pedometer = IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData logout = IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData alarm = IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
+  static const IconData profile = IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
