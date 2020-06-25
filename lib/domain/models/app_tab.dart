@@ -8,8 +8,8 @@ import 'package:turbostart/other/buisness_card_icons.dart';
 part 'app_tab.g.dart';
 
 class AppTab extends EnumClass {
-  static const AppTab about = _$about;
-  static const AppTab projects = _$projects;
+  static const AppTab pedometer = _$pedometer;
+  static const AppTab profile = _$profile;
 
   const AppTab._(String name) : super(name);
 
@@ -20,19 +20,19 @@ class AppTab extends EnumClass {
   static AppTab fromIndex(int index) {
     switch (index) {
       case 0:
-        return AppTab.about;
+        return AppTab.pedometer;
       case 1:
-        return AppTab.projects;
+        return AppTab.profile;
       default:
-        return AppTab.about;
+        return AppTab.pedometer;
     }
   }
 
   static int toIndex(AppTab tab) {
     switch (tab) {
-      case AppTab.about:
+      case AppTab.pedometer:
         return 0;
-      case AppTab.projects:
+      case AppTab.profile:
         return 1;
       default:
         return 0;
@@ -41,10 +41,10 @@ class AppTab extends EnumClass {
 
   static IconData activeIconByTab(AppTab tab) {
     switch (tab) {
-      case AppTab.about:
-        return BuisnessCardIcons.user;
-      case AppTab.projects:
+      case AppTab.pedometer:
         return BuisnessCardIcons.apps;
+      case AppTab.profile:
+        return BuisnessCardIcons.user;
 
       default:
         return null;
@@ -53,10 +53,10 @@ class AppTab extends EnumClass {
 
   static IconData passiveIconByTab(AppTab tab) {
     switch (tab) {
-      case AppTab.about:
-        return BuisnessCardIcons.user;
-      case AppTab.projects:
+      case AppTab.pedometer:
         return BuisnessCardIcons.apps;
+      case AppTab.profile:
+        return BuisnessCardIcons.user;
       default:
         return null;
     }

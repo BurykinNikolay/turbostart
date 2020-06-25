@@ -224,7 +224,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
               ),
             ),
             GestureDetector(
-              onTap: () => print("bloc.end"),
+              onTap: () => bloc.end(),
               child: Container(
                 color: Colors.transparent,
                 child: Text(
