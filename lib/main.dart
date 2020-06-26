@@ -5,6 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_built_redux/flutter_built_redux.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:turbostart/feature/home/home.dart';
+import 'package:turbostart/feature/pedometer/presentation/pedometer_screen.dart';
 
 import 'di/di_container.dart';
 import 'domain/domain.dart';
@@ -46,7 +48,7 @@ class _MyAppState extends State<MyApp> {
         builder: (ctx, appTheme, actions) => MaterialApp(
           navigatorKey: store.state.navigationState.rootNavigatorKey,
           title: 'Turbostart',
-          theme: appTheme == AppTheme.dark ? darkTheme(context) : lightTheme(context),
+          theme: lightTheme(context),
           localizationsDelegates: [
             AppLocalizationsDelegate(),
             FallbackCupertinoLocalisationsDelegate(),

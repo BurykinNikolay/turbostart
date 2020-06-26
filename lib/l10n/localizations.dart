@@ -158,6 +158,50 @@ class AppLocalizations {
   String get pedometer {
     return Intl.message('Pedometer', name: 'pedometer');
   }
+
+  String get iam {
+    return Intl.message('I\'am', name: 'iam');
+  }
+
+  String get today {
+    return Intl.message('Today', name: 'today');
+  }
+
+  String get total {
+    return Intl.message('Total', name: 'total');
+  }
+
+  String get mySteps {
+    return Intl.message('My steps', name: 'mySteps');
+  }
+
+  String get stepsOfMacroregion {
+    return Intl.message('Steps of macroregion', name: 'stepsOfMacroregion');
+  }
+
+  String get week {
+    return Intl.message('Week', name: 'week');
+  }
+
+  String get month {
+    return Intl.message('Month', name: 'month');
+  }
+
+  String get allTime {
+    return Intl.message('All time', name: 'allTime');
+  }
+
+  String get steps {
+    return Intl.message('Steps', name: 'steps');
+  }
+
+  String get tenThousand {
+    return Intl.message('Every 10,000 steps are converted into 1 ruble, and all the funds raised go to a charity fund to support children with disabilities.', name: 'tenThousand');
+  }
+
+  String get makeYourContribution {
+    return Intl.message('Make your contribution to a big deal!', name: 'makeYourContribution');
+  }
 }
 
 /// Used to provide resources to app

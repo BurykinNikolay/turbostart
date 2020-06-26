@@ -195,7 +195,7 @@ class TurbostartTabBar extends StatelessWidget implements PreferredSizeWidget {
       );
     }
 
-    return Container(color: theme.white, child: result);
+    return result;
   }
 
   List<Widget> _buildTabItems(BuildContext context) {

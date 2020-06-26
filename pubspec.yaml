@@ -35,7 +35,7 @@ dependencies:
   intl_translation: 0.17.7
   introduction_screen: 1.0.8
   provider: 3.2.0
-  keyboard_visibility:
+  flutter_plot: 0.0.3
 
 dev_dependencies:
   flutter_test:

@@ -165,8 +165,63 @@
     "type": "text",
     "placeholders": {}
   },
-  "pedometer": "Шагометр",
+  "pedometer": "Шагомер",
   "@pedometer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "iam": "Я",
+  "@iam": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "today": "Сегодня",
+  "@today": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "total": "Всего",
+  "@total": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mySteps": "Мои шаги",
+  "@mySteps": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "stepsOfMacroregion": "Шаги макрорегиона",
+  "@stepsOfMacroregion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "week": "Неделя",
+  "@week": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "month": "Месяц",
+  "@month": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "allTime": "Весь период",
+  "@allTime": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "steps": "шагов",
+  "@steps": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "tenThousand": "Каждые 10 000 шагов конвертируются\nв 1 рубль, а все собранные средства\nидут в благотворительный фонд поддержки\nдетей-спортсменов с ограниченными\nвозможностями.",
+  "@tenThousand": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "makeYourContribution": "Внеси свой вклад\nв большое дело!",
+  "@makeYourContribution": {
     "type": "text",
     "placeholders": {}
   }

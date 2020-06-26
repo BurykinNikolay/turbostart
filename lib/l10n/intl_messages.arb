@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2020-06-25T12:15:57.370524",
+  "@@last_modified": "2020-06-26T20:53:29.710155",
   "simpleText": "Simple Text",
   "@simpleText": {
     "type": "text",
@@ -167,6 +167,61 @@
   },
   "pedometer": "Pedometer",
   "@pedometer": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "iam": "I'am",
+  "@iam": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "today": "Today",
+  "@today": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "total": "Total",
+  "@total": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "mySteps": "My steps",
+  "@mySteps": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "stepsOfMacroregion": "Steps of macroregion",
+  "@stepsOfMacroregion": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "week": "Week",
+  "@week": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "month": "Month",
+  "@month": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "allTime": "All time",
+  "@allTime": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "steps": "Steps",
+  "@steps": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "tenThousand": "Every 10,000 steps are converted into 1 ruble, and all the funds raised go to a charity fund to support children with disabilities.",
+  "@tenThousand": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "makeYourContribution": "Make your contribution to a big deal!",
+  "@makeYourContribution": {
     "type": "text",
     "placeholders": {}
   }
