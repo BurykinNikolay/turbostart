@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:turbostart/domain/models/app_tab.dart';
+import 'package:turbostart/feature/pedometer/presentation/pedometer_screen.dart';
 import 'package:turbostart/feature/profile/profile.dart';
 
 import 'package:turbostart/other/theme.dart' as theme;
@@ -19,12 +20,7 @@ class _HomeScreenViewState extends State<HomeScreenView> {
   HomeScreenBloc get bloc => Provider.of<HomeScreenBloc>(context);
 
   final List<Widget> _pagesList = [
-    Center(
-      child: Text(
-        "Page in Progress",
-        style: theme.boldWhite36,
-      ),
-    ),
+    PedometerScreen(),
     ProfileScreen(),
   ];
 
@@ -32,13 +28,23 @@ class _HomeScreenViewState extends State<HomeScreenView> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: _buildTabBar(),
-      body: StreamBuilder<AppTab>(
-        initialData: bloc.activeTab,
-        stream: bloc.currentPageStream,
-        builder: (context, snapshot) {
-          return _pagesList[AppTab.toIndex(snapshot.data)];
-        },
+      backgroundColor: theme.mainGreen,
+      body: Stack(
+        children: [
+          StreamBuilder<AppTab>(
+            initialData: bloc.activeTab,
+            stream: bloc.currentPageStream,
+            builder: (context, snapshot) {
+              return _pagesList[AppTab.toIndex(snapshot.data)];
+            },
+          ),
+          Positioned(
+            bottom: 0,
+            left: 0,
+            right: 0,
+            child: _buildTabBar(),
+          ),
+        ],
       ),
     );
   }

@@ -24,6 +24,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "afterRegister" : MessageLookupByLibrary.simpleMessage("After register"),
     "allStepsAreConvertedIntoRublesAndGoToACharityFund" : MessageLookupByLibrary.simpleMessage("All steps are converted into rubles and go to a charity fund"),
     "allStepsAreSetOff" : MessageLookupByLibrary.simpleMessage("All steps are set off"),
+    "allTime" : MessageLookupByLibrary.simpleMessage("All time"),
     "auth" : MessageLookupByLibrary.simpleMessage("Auth"),
     "backToTaskList" : MessageLookupByLibrary.simpleMessage("Back to task list"),
     "correspondent" : MessageLookupByLibrary.simpleMessage("Correspondent"),
@@ -33,10 +34,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "forgotPassword" : MessageLookupByLibrary.simpleMessage("Forgot password?"),
     "haveAProblem" : MessageLookupByLibrary.simpleMessage("Have a problem?"),
     "help" : MessageLookupByLibrary.simpleMessage("Help"),
+    "iam" : MessageLookupByLibrary.simpleMessage("I\'am"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
     "macroregion" : MessageLookupByLibrary.simpleMessage("Macroregion"),
+    "makeYourContribution" : MessageLookupByLibrary.simpleMessage("Make your contribution to a big deal!"),
+    "month" : MessageLookupByLibrary.simpleMessage("Month"),
     "moveAndAccumulateSteps" : MessageLookupByLibrary.simpleMessage("Move and accumulate steps"),
     "myMacroregion" : MessageLookupByLibrary.simpleMessage("My macroregion"),
+    "mySteps" : MessageLookupByLibrary.simpleMessage("My steps"),
     "ok" : MessageLookupByLibrary.simpleMessage("Ok"),
     "password" : MessageLookupByLibrary.simpleMessage("Password"),
     "passwordContainsInvalidCharacters" : MessageLookupByLibrary.simpleMessage("Password contains invalid characters"),
@@ -52,8 +57,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "signIn" : MessageLookupByLibrary.simpleMessage("Sign In"),
     "simpleText" : MessageLookupByLibrary.simpleMessage("Simple Text"),
     "skip" : MessageLookupByLibrary.simpleMessage("Skip"),
+    "steps" : MessageLookupByLibrary.simpleMessage("Steps"),
+    "stepsOfMacroregion" : MessageLookupByLibrary.simpleMessage("Steps of macroregion"),
     "teamVictoryYourVictory" : MessageLookupByLibrary.simpleMessage("Team victory — your victory!"),
+    "tenThousand" : MessageLookupByLibrary.simpleMessage("Every 10,000 steps are converted into 1 ruble, and all the funds raised go to a charity fund to support children with disabilities."),
+    "today" : MessageLookupByLibrary.simpleMessage("Today"),
     "together" : MessageLookupByLibrary.simpleMessage("Together"),
-    "turbostarts" : MessageLookupByLibrary.simpleMessage("Turbostarts")
+    "total" : MessageLookupByLibrary.simpleMessage("Total"),
+    "turbostarts" : MessageLookupByLibrary.simpleMessage("Turbostarts"),
+    "week" : MessageLookupByLibrary.simpleMessage("Week")
   };
 }
