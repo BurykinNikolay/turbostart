@@ -16,5 +16,4 @@ abstract class AppActions extends ReduxActions {
   LoginActions get login;
 
   ActionDispatcher<AppTab> get updateTab;
-  ActionDispatcher<AppTheme> get setAppTheme;
 }

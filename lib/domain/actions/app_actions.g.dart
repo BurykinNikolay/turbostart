@@ -15,7 +15,6 @@ class _$AppActions extends AppActions {
   _$AppActions._() : super._();
 
   final updateTab = new ActionDispatcher<AppTab>('AppActions-updateTab');
-  final setAppTheme = new ActionDispatcher<AppTheme>('AppActions-setAppTheme');
 
   final navigation = new NavigationActions();
   final login = new LoginActions();
@@ -23,7 +22,6 @@ class _$AppActions extends AppActions {
   @override
   void setDispatcher(Dispatcher dispatcher) {
     updateTab.setDispatcher(dispatcher);
-    setAppTheme.setDispatcher(dispatcher);
 
     navigation.setDispatcher(dispatcher);
     login.setDispatcher(dispatcher);
@@ -32,5 +30,4 @@ class _$AppActions extends AppActions {
 
 class AppActionsNames {
   static final updateTab = new ActionName<AppTab>('AppActions-updateTab');
-  static final setAppTheme = new ActionName<AppTheme>('AppActions-setAppTheme');
 }

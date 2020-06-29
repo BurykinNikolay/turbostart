@@ -6,13 +6,84 @@ part of 'app_state.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<AppState> _$appStateSerializer = new _$AppStateSerializer();
+
+class _$AppStateSerializer implements StructuredSerializer<AppState> {
+  @override
+  final Iterable<Type> types = const [AppState, _$AppState];
+  @override
+  final String wireName = 'AppState';
+
+  @override
+  Iterable<Object> serialize(Serializers serializers, AppState object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'activeTab',
+      serializers.serialize(object.activeTab,
+          specifiedType: const FullType(AppTab)),
+      'navigationState',
+      serializers.serialize(object.navigationState,
+          specifiedType: const FullType(NavigationState)),
+      'loginState',
+      serializers.serialize(object.loginState,
+          specifiedType: const FullType(LoginState)),
+      'userState',
+      serializers.serialize(object.userState,
+          specifiedType: const FullType(UserState)),
+    ];
+    if (object.apiUrl != null) {
+      result
+        ..add('apiUrl')
+        ..add(serializers.serialize(object.apiUrl,
+            specifiedType: const FullType(String)));
+    }
+    return result;
+  }
+
+  @override
+  AppState deserialize(Serializers serializers, Iterable<Object> serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new AppStateBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'activeTab':
+          result.activeTab = serializers.deserialize(value,
+              specifiedType: const FullType(AppTab)) as AppTab;
+          break;
+        case 'navigationState':
+          result.navigationState.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(NavigationState))
+              as NavigationState);
+          break;
+        case 'loginState':
+          result.loginState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(LoginState)) as LoginState);
+          break;
+        case 'userState':
+          result.userState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(UserState)) as UserState);
+          break;
+        case 'apiUrl':
+          result.apiUrl = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
 class _$AppState extends AppState {
   @override
   final AppTab activeTab;
   @override
   final NavigationState navigationState;
-  @override
-  final AppTheme appTheme;
   @override
   final LoginState loginState;
   @override
@@ -26,7 +97,6 @@ class _$AppState extends AppState {
   _$AppState._(
       {this.activeTab,
       this.navigationState,
-      this.appTheme,
       this.loginState,
       this.userState,
       this.apiUrl})
@@ -36,9 +106,6 @@ class _$AppState extends AppState {
     }
     if (navigationState == null) {
       throw new BuiltValueNullFieldError('AppState', 'navigationState');
-    }
-    if (appTheme == null) {
-      throw new BuiltValueNullFieldError('AppState', 'appTheme');
     }
     if (loginState == null) {
       throw new BuiltValueNullFieldError('AppState', 'loginState');
@@ -61,7 +128,6 @@ class _$AppState extends AppState {
     return other is AppState &&
         activeTab == other.activeTab &&
         navigationState == other.navigationState &&
-        appTheme == other.appTheme &&
         loginState == other.loginState &&
         userState == other.userState &&
         apiUrl == other.apiUrl;
@@ -71,9 +137,7 @@ class _$AppState extends AppState {
   int get hashCode {
     return $jf($jc(
         $jc(
-            $jc(
-                $jc($jc($jc(0, activeTab.hashCode), navigationState.hashCode),
-                    appTheme.hashCode),
+            $jc($jc($jc(0, activeTab.hashCode), navigationState.hashCode),
                 loginState.hashCode),
             userState.hashCode),
         apiUrl.hashCode));
@@ -84,7 +148,6 @@ class _$AppState extends AppState {
     return (newBuiltValueToStringHelper('AppState')
           ..add('activeTab', activeTab)
           ..add('navigationState', navigationState)
-          ..add('appTheme', appTheme)
           ..add('loginState', loginState)
           ..add('userState', userState)
           ..add('apiUrl', apiUrl))
@@ -104,10 +167,6 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$this._navigationState ??= new NavigationStateBuilder();
   set navigationState(NavigationStateBuilder navigationState) =>
       _$this._navigationState = navigationState;
-
-  AppTheme _appTheme;
-  AppTheme get appTheme => _$this._appTheme;
-  set appTheme(AppTheme appTheme) => _$this._appTheme = appTheme;
 
   LoginStateBuilder _loginState;
   LoginStateBuilder get loginState =>
@@ -130,7 +189,6 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
     if (_$v != null) {
       _activeTab = _$v.activeTab;
       _navigationState = _$v.navigationState?.toBuilder();
-      _appTheme = _$v.appTheme;
       _loginState = _$v.loginState?.toBuilder();
       _userState = _$v.userState?.toBuilder();
       _apiUrl = _$v.apiUrl;
@@ -160,7 +218,6 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
           new _$AppState._(
               activeTab: activeTab,
               navigationState: navigationState.build(),
-              appTheme: appTheme,
               loginState: loginState.build(),
               userState: userState.build(),
               apiUrl: apiUrl);
@@ -169,7 +226,6 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       try {
         _$failedField = 'navigationState';
         navigationState.build();
-
         _$failedField = 'loginState';
         loginState.build();
         _$failedField = 'userState';
