@@ -13,11 +13,23 @@ class _$AppState extends AppState {
   final NavigationState navigationState;
   @override
   final AppTheme appTheme;
+  @override
+  final LoginState loginState;
+  @override
+  final UserState userState;
+  @override
+  final String apiUrl;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.activeTab, this.navigationState, this.appTheme})
+  _$AppState._(
+      {this.activeTab,
+      this.navigationState,
+      this.appTheme,
+      this.loginState,
+      this.userState,
+      this.apiUrl})
       : super._() {
     if (activeTab == null) {
       throw new BuiltValueNullFieldError('AppState', 'activeTab');
@@ -27,6 +39,12 @@ class _$AppState extends AppState {
     }
     if (appTheme == null) {
       throw new BuiltValueNullFieldError('AppState', 'appTheme');
+    }
+    if (loginState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'loginState');
+    }
+    if (userState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'userState');
     }
   }
 
@@ -43,13 +61,22 @@ class _$AppState extends AppState {
     return other is AppState &&
         activeTab == other.activeTab &&
         navigationState == other.navigationState &&
-        appTheme == other.appTheme;
+        appTheme == other.appTheme &&
+        loginState == other.loginState &&
+        userState == other.userState &&
+        apiUrl == other.apiUrl;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, activeTab.hashCode), navigationState.hashCode),
-        appTheme.hashCode));
+    return $jf($jc(
+        $jc(
+            $jc(
+                $jc($jc($jc(0, activeTab.hashCode), navigationState.hashCode),
+                    appTheme.hashCode),
+                loginState.hashCode),
+            userState.hashCode),
+        apiUrl.hashCode));
   }
 
   @override
@@ -57,7 +84,10 @@ class _$AppState extends AppState {
     return (newBuiltValueToStringHelper('AppState')
           ..add('activeTab', activeTab)
           ..add('navigationState', navigationState)
-          ..add('appTheme', appTheme))
+          ..add('appTheme', appTheme)
+          ..add('loginState', loginState)
+          ..add('userState', userState)
+          ..add('apiUrl', apiUrl))
         .toString();
   }
 }
@@ -79,6 +109,21 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   AppTheme get appTheme => _$this._appTheme;
   set appTheme(AppTheme appTheme) => _$this._appTheme = appTheme;
 
+  LoginStateBuilder _loginState;
+  LoginStateBuilder get loginState =>
+      _$this._loginState ??= new LoginStateBuilder();
+  set loginState(LoginStateBuilder loginState) =>
+      _$this._loginState = loginState;
+
+  UserStateBuilder _userState;
+  UserStateBuilder get userState =>
+      _$this._userState ??= new UserStateBuilder();
+  set userState(UserStateBuilder userState) => _$this._userState = userState;
+
+  String _apiUrl;
+  String get apiUrl => _$this._apiUrl;
+  set apiUrl(String apiUrl) => _$this._apiUrl = apiUrl;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
@@ -86,6 +131,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _activeTab = _$v.activeTab;
       _navigationState = _$v.navigationState?.toBuilder();
       _appTheme = _$v.appTheme;
+      _loginState = _$v.loginState?.toBuilder();
+      _userState = _$v.userState?.toBuilder();
+      _apiUrl = _$v.apiUrl;
       _$v = null;
     }
     return this;
@@ -112,12 +160,20 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
           new _$AppState._(
               activeTab: activeTab,
               navigationState: navigationState.build(),
-              appTheme: appTheme);
+              appTheme: appTheme,
+              loginState: loginState.build(),
+              userState: userState.build(),
+              apiUrl: apiUrl);
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'navigationState';
         navigationState.build();
+
+        _$failedField = 'loginState';
+        loginState.build();
+        _$failedField = 'userState';
+        userState.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

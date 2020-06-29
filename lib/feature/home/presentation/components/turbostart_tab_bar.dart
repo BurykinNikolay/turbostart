@@ -8,7 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import 'package:turbostart/other/theme.dart' as theme;
 
 // Standard iOS 10 tab bar height.
 const double _kTabBarHeight = 85.0;
