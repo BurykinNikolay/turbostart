@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_built_redux/flutter_built_redux.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:logger/logger.dart';
+import 'package:turbostart/feature/home/home.dart';
 
 import 'app_starter.dart' as starter;
 import 'domain/domain.dart';
@@ -51,24 +52,21 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return ReduxProvider(
       store: starter.store,
-      child: StoreConnection<AppState, AppActions, AppTheme>(
-        connect: (appState) => appState.appTheme,
-        builder: (ctx, appTheme, actions) => MaterialApp(
-          navigatorKey: starter.store.state.navigationState.rootNavigatorKey,
-          title: 'Turbostart',
-          theme: lightTheme(context),
-          localizationsDelegates: [
-            AppLocalizationsDelegate(),
-            FallbackCupertinoLocalisationsDelegate(),
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-          ],
-          supportedLocales: [
-            Locale('ru'),
-            // Locale("en"),
-          ],
-          home: AuthScreen(),
-        ),
+      child: MaterialApp(
+        navigatorKey: starter.store.state.navigationState.rootNavigatorKey,
+        title: 'Turbostart',
+        theme: lightTheme(context),
+        localizationsDelegates: [
+          AppLocalizationsDelegate(),
+          FallbackCupertinoLocalisationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+        ],
+        supportedLocales: [
+          Locale('ru'),
+          // Locale("en"),
+        ],
+        home: starter.store?.state?.userState?.token != null ? HomeScreen() : AuthScreen(),
       ),
     );
   }

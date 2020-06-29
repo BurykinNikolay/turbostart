@@ -6,6 +6,8 @@ import 'package:turbostart/feature/auth/repository/login_repository.dart';
 import 'package:turbostart/feature/navigation/domain/app_route.dart';
 import 'package:turbostart/feature/navigation/navigation.dart';
 
+import '../../../../app_starter.dart' as starter;
+
 import '../login_actions.dart';
 
 const _success = "success";
@@ -14,7 +16,8 @@ MiddlewareBuilder<AppState, AppStateBuilder, AppActions> loginMiddleware() {
   return MiddlewareBuilder<AppState, AppStateBuilder, AppActions>()
     ..add(LoginActionsNames.setLoginResponse, _setLoginResponse)
     ..add(LoginActionsNames.loginRequest, _loginRequest)
-    ..add(LoginActionsNames.setUserInfoResponse, _setUserInfoResponse);
+    ..add(LoginActionsNames.setUserInfoResponse, _setUserInfoResponse)
+    ..add(LoginActionsNames.logout, _logout);
 }
 
 void _loginRequest(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<LoginRequest> action) async {
@@ -36,7 +39,7 @@ void _setLoginResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
       AppRoute((builder) => builder..route = Routes.onboarding),
     );
     api.actions.login.getUserInfo();
-    _saveAppState(api.state);
+    _saveAppState(api);
   } else {
     api.actions.navigation.showDialog(DialogBundle((builder) => builder
       ..dialog = Dialogs.alert
@@ -51,7 +54,16 @@ void _setUserInfoResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> a
 
   if (userInfoResponse.status == _success) {
     api.actions.login.setUserInfo(userInfoResponse.userInfo);
+    _saveAppState(api);
   }
 }
 
-void _saveAppState(AppState appState) async {}
+void _logout(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<void> action) async {
+  next(action);
+
+  _saveAppState(api);
+}
+
+void _saveAppState(MiddlewareApi<AppState, AppStateBuilder, AppActions> api) async {
+  await starter.dbStorage.saveAppState(api.state);
+}

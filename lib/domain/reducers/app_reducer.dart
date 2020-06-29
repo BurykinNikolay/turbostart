@@ -1,4 +1,6 @@
 import 'package:built_redux/built_redux.dart';
+import 'package:turbostart/domain/states/user_state.dart';
+import 'package:turbostart/feature/auth/domain/login_domain.dart';
 
 import '../domain.dart';
 
@@ -8,7 +10,7 @@ NestedReducerBuilder<AppState, AppStateBuilder, AppState, AppStateBuilder> creat
     (builder) => builder,
   )
     ..add(AppActionsNames.updateTab, _updateTab)
-    ..add(AppActionsNames.setAppTheme, _setAppTheme);
+    ..add(LoginActionsNames.logout, _logout);
 }
 
 void _updateTab(
@@ -17,9 +19,10 @@ void _updateTab(
   AppStateBuilder builder,
 ) =>
     builder.activeTab = action.payload;
-void _setAppTheme(
+
+void _logout(
   AppState state,
-  Action<AppTheme> action,
+  Action<void> action,
   AppStateBuilder builder,
 ) =>
-    builder.appTheme = action.payload;
+    builder.userState.replace(UserState());

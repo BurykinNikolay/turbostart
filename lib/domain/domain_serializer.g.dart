@@ -7,6 +7,10 @@ part of 'domain_serializer.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
+      ..add(AppState.serializer)
+      ..add(AppTab.serializer)
+      ..add(LoginState.serializer)
+      ..add(NavigationState.serializer)
       ..add(UserInfo.serializer)
       ..add(UserState.serializer))
     .build();
