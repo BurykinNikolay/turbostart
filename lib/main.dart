@@ -1,20 +1,44 @@
-import 'package:built_redux/built_redux.dart';
-import 'package:dioc/dioc.dart';
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_built_redux/flutter_built_redux.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:turbostart/feature/home/home.dart';
-import 'package:turbostart/feature/pedometer/presentation/pedometer_screen.dart';
+import 'package:logger/logger.dart';
 
-import 'di/di_container.dart';
+import 'app_starter.dart' as starter;
 import 'domain/domain.dart';
 import 'feature/auth/presentation/auth_screen.dart';
+import 'feature/logger/logger.dart';
 import 'l10n/localizations.dart';
 import 'other/theme.dart';
 
-void main() => runApp(MyApp());
+void main({bool useDeviceSimulator = false, bool useReduxRemote = false}) {
+  FlutterError.onError = (FlutterErrorDetails details) async {
+    Zone.current.handleUncaughtError(details.exception, details.stack);
+  };
+
+  runZonedGuarded<void>(
+    () => _run(useDeviceSimulator: useDeviceSimulator, useReduxRemote: useReduxRemote),
+    (error, stackTrace) async {
+      logger.e('Unexpected error: $error\n$stackTrace');
+    },
+  );
+}
+
+/// main runner
+Future<void> _run({bool useDeviceSimulator, bool useReduxRemote}) async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //set LogLevel
+  Logger.level = Level.debug;
+
+  // after init
+  await starter.startApp();
+
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
@@ -23,30 +47,14 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final store = Store<AppState, AppStateBuilder, AppActions>(
-    reducers,
-    AppState(),
-    AppActions(),
-    middleware: middlewares,
-  );
-
-  @override
-  void initState() {
-    super.initState();
-    diContainer.register<Store<AppState, AppStateBuilder, AppActions>>(
-      (container) => store,
-      defaultMode: InjectMode.singleton,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return ReduxProvider(
-      store: store,
+      store: starter.store,
       child: StoreConnection<AppState, AppActions, AppTheme>(
         connect: (appState) => appState.appTheme,
         builder: (ctx, appTheme, actions) => MaterialApp(
-          navigatorKey: store.state.navigationState.rootNavigatorKey,
+          navigatorKey: starter.store.state.navigationState.rootNavigatorKey,
           title: 'Turbostart',
           theme: lightTheme(context),
           localizationsDelegates: [

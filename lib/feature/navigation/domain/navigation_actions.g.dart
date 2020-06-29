@@ -9,17 +9,16 @@ part of 'navigation_actions.dart';
 // ignore_for_file: avoid_classes_with_only_static_members
 // ignore_for_file: annotate_overrides
 // ignore_for_file: overridden_fields
-// ignore_for_file: type_annotate_public_apis
 
 class _$NavigationActions extends NavigationActions {
-  factory _$NavigationActions() => _$NavigationActions._();
+  factory _$NavigationActions() => new _$NavigationActions._();
   _$NavigationActions._() : super._();
 
-  final routeTo = ActionDispatcher<AppRoute>('NavigationActions-routeTo');
+  final routeTo = new ActionDispatcher<AppRoute>('NavigationActions-routeTo');
   final showDialog =
-      ActionDispatcher<DialogBundle>('NavigationActions-showDialog');
-  final showBottomSheet =
-      ActionDispatcher<BottomSheetBundle>('NavigationActions-showBottomSheet');
+      new ActionDispatcher<DialogBundle>('NavigationActions-showDialog');
+  final showBottomSheet = new ActionDispatcher<BottomSheetBundle>(
+      'NavigationActions-showBottomSheet');
 
   @override
   void setDispatcher(Dispatcher dispatcher) {
@@ -30,9 +29,9 @@ class _$NavigationActions extends NavigationActions {
 }
 
 class NavigationActionsNames {
-  static final routeTo = ActionName<AppRoute>('NavigationActions-routeTo');
+  static final routeTo = new ActionName<AppRoute>('NavigationActions-routeTo');
   static final showDialog =
-      ActionName<DialogBundle>('NavigationActions-showDialog');
+      new ActionName<DialogBundle>('NavigationActions-showDialog');
   static final showBottomSheet =
-      ActionName<BottomSheetBundle>('NavigationActions-showBottomSheet');
+      new ActionName<BottomSheetBundle>('NavigationActions-showBottomSheet');
 }

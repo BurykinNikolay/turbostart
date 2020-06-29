@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:turbostart/feature/auth/domain/login_screen_status.dart';
 import 'package:turbostart/l10n/localizations.dart';
 import 'package:turbostart/other/regexes.dart';
 import 'package:turbostart/other/theme.dart' as theme;
@@ -39,12 +40,19 @@ class __AuthSheetViewState extends State<_AuthSheetView> {
         child: _loginAndPasswordForm(),
       ),
       SizedBox(height: 132),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 37.5),
-        child: PrimaryColorRoundedButton(
-          text: localizations.login,
-          onPressed: () => bloc.login(),
-        ),
+      StreamBuilder<LoginScreenStatus>(
+        stream: bloc.loginScreenStatusController.stream,
+        initialData: bloc.loginScreenStatus,
+        builder: (context, snapshot) {
+          final isProgress = snapshot.data == LoginScreenStatus.progress;
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 37.5),
+            child: PrimaryColorRoundedButton(
+              text: localizations.login,
+              onPressed: () => bloc.login(login: _loginController.text, password: _passwordController.text),
+            ),
+          );
+        },
       ),
       SizedBox(height: 95),
       Text(

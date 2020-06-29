@@ -1,0 +1,1 @@
+enum LoginScreenStatus { progress, wait }

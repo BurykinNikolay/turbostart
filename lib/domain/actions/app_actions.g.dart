@@ -9,16 +9,16 @@ part of 'app_actions.dart';
 // ignore_for_file: avoid_classes_with_only_static_members
 // ignore_for_file: annotate_overrides
 // ignore_for_file: overridden_fields
-// ignore_for_file: type_annotate_public_apis
 
 class _$AppActions extends AppActions {
-  factory _$AppActions() => _$AppActions._();
+  factory _$AppActions() => new _$AppActions._();
   _$AppActions._() : super._();
 
-  final updateTab = ActionDispatcher<AppTab>('AppActions-updateTab');
-  final setAppTheme = ActionDispatcher<AppTheme>('AppActions-setAppTheme');
+  final updateTab = new ActionDispatcher<AppTab>('AppActions-updateTab');
+  final setAppTheme = new ActionDispatcher<AppTheme>('AppActions-setAppTheme');
 
-  final navigation = NavigationActions();
+  final navigation = new NavigationActions();
+  final login = new LoginActions();
 
   @override
   void setDispatcher(Dispatcher dispatcher) {
@@ -26,10 +26,11 @@ class _$AppActions extends AppActions {
     setAppTheme.setDispatcher(dispatcher);
 
     navigation.setDispatcher(dispatcher);
+    login.setDispatcher(dispatcher);
   }
 }
 
 class AppActionsNames {
-  static final updateTab = ActionName<AppTab>('AppActions-updateTab');
-  static final setAppTheme = ActionName<AppTheme>('AppActions-setAppTheme');
+  static final updateTab = new ActionName<AppTab>('AppActions-updateTab');
+  static final setAppTheme = new ActionName<AppTheme>('AppActions-setAppTheme');
 }
