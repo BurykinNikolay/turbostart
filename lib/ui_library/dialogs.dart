@@ -11,7 +11,7 @@ class TurboAlertDialog extends StatelessWidget {
     final localizations = AppLocalizations.of(context);
     return CupertinoAlertDialog(
       title: Text(localizations.error),
-      content: Text(content),
+      content: Text(content ?? ""),
       actions: <Widget>[
         CupertinoDialogAction(
           onPressed: () {

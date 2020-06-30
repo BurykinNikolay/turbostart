@@ -1,5 +1,6 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:built_redux/built_redux.dart';
+import 'package:flutter/foundation.dart';
 
 import 'package:turbostart/domain/domain.dart';
 import 'package:health/health.dart';
@@ -34,25 +35,29 @@ void _getStepsForAllTime(MiddlewareApi<AppState, AppStateBuilder, AppActions> ap
   }
 }
 
-void _getStepsForLastTwoWeek(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<void> action) async {
+void _getStepsForLastTwoWeek(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<void> action) {
   next(action);
   List<HealthDataType> types = [
     HealthDataType.STEPS,
   ];
   DateTime today = DateTime.now();
   DateTime twoWeekAgo = today.subtract(new Duration(days: 14));
-  List<HealthDataPoint> healthData = await _getData(twoWeekAgo, today);
-
-  if (healthData != null) {
-    List<Steps> stepsList = calculateStepsByDays(twoWeekAgo, today, healthData);
-    api.actions.health.setSteps(
-      BuiltList<Steps>.from(stepsList),
-    );
-  }
+  _getData(twoWeekAgo, today).then((healthData) {
+    compute(calculateStepsByDays, _BundleData(startDate: twoWeekAgo, endDate: today, healthData: healthData)).then((stepsList) {
+      if (healthData != null) {
+        api.actions.health.setSteps(
+          BuiltList<Steps>.from(stepsList),
+        );
+      }
+    });
+  });
 }
 
-List<Steps> calculateStepsByDays(DateTime startDate, DateTime endDate, List<HealthDataPoint> healthData) {
+List<Steps> calculateStepsByDays(_BundleData data) {
   List<Steps> stepsList = [];
+  final endDate = data.endDate;
+  final healthData = data.healthData;
+  final startDate = data.startDate;
   for (int i = 0; i <= endDate.difference(startDate).inDays; i++) {
     final checkDay = endDate.subtract(new Duration(days: i));
     final datasFromCheckDay = healthData.where((data) {
@@ -67,7 +72,6 @@ List<Steps> calculateStepsByDays(DateTime startDate, DateTime endDate, List<Heal
     final steps = Steps((builder) => builder
       ..date = checkDay.millisecondsSinceEpoch
       ..steps = countOfSteps);
-    //logger.i("${DateTime.fromMillisecondsSinceEpoch(steps.date)} ${steps.steps}");
     stepsList.add(steps);
   }
   return stepsList;
@@ -111,3 +115,10 @@ void _setSteps(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionH
 }
 
 void _onError(error) => logger.e("Health Error: $error");
+
+class _BundleData {
+  _BundleData({this.startDate, this.endDate, this.healthData});
+  final DateTime startDate;
+  final DateTime endDate;
+  final List<HealthDataPoint> healthData;
+}
