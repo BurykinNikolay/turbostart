@@ -3,6 +3,7 @@ import 'package:turbostart/domain/domain.dart';
 
 import 'package:flutter/cupertino.dart' hide Action;
 import 'package:flutter/material.dart' hide Action;
+import 'package:turbostart/feature/auth/auth.dart';
 import 'package:turbostart/feature/home/home.dart';
 import 'package:turbostart/feature/onboarding/onboarding.dart';
 
@@ -40,6 +41,12 @@ void routeTo(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHan
       break;
     case Routes.pop:
       rootNavigator.maybePop();
+      break;
+
+    case Routes.login:
+      await rootNavigator.pushAndRemoveUntil(CupertinoPageRoute(builder: (context) => AuthScreen(), settings: RouteSettings(name: Routes.login)), (route) {
+        return false;
+      });
       break;
 
     default:

@@ -21,6 +21,7 @@ abstract class UserInfoResponse implements BaseModel, Built<UserInfoResponse, Us
   String get status;
 
   @nullable
+  @BuiltValueField(wireName: 'data')
   UserInfo get userInfo;
 
   static Serializer<UserInfoResponse> get serializer => _$userInfoResponseSerializer;

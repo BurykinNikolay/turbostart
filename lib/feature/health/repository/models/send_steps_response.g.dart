@@ -1,25 +1,31 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_info_response.dart';
+part of 'send_steps_response.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<UserInfoResponse> _$userInfoResponseSerializer =
-    new _$UserInfoResponseSerializer();
+Serializer<SendStepsResponse> _$sendStepsResponseSerializer =
+    new _$SendStepsResponseSerializer();
 
-class _$UserInfoResponseSerializer
-    implements StructuredSerializer<UserInfoResponse> {
+class _$SendStepsResponseSerializer
+    implements StructuredSerializer<SendStepsResponse> {
   @override
-  final Iterable<Type> types = const [UserInfoResponse, _$UserInfoResponse];
+  final Iterable<Type> types = const [SendStepsResponse, _$SendStepsResponse];
   @override
-  final String wireName = 'UserInfoResponse';
+  final String wireName = 'SendStepsResponse';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, UserInfoResponse object,
+  Iterable<Object> serialize(Serializers serializers, SendStepsResponse object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[];
+    if (object.request != null) {
+      result
+        ..add('request')
+        ..add(serializers.serialize(object.request,
+            specifiedType: const FullType(SendStepsRequest)));
+    }
     if (object.message != null) {
       result
         ..add('message')
@@ -37,12 +43,6 @@ class _$UserInfoResponseSerializer
         ..add('status')
         ..add(serializers.serialize(object.status,
             specifiedType: const FullType(String)));
-    }
-    if (object.userInfo != null) {
-      result
-        ..add('data')
-        ..add(serializers.serialize(object.userInfo,
-            specifiedType: const FullType(UserInfo)));
     }
     if (object.meta != null) {
       result
@@ -66,10 +66,10 @@ class _$UserInfoResponseSerializer
   }
 
   @override
-  UserInfoResponse deserialize(
+  SendStepsResponse deserialize(
       Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new UserInfoResponseBuilder();
+    final result = new SendStepsResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -77,6 +77,11 @@ class _$UserInfoResponseSerializer
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
+        case 'request':
+          result.request.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(SendStepsRequest))
+              as SendStepsRequest);
+          break;
         case 'message':
           result.message = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -88,10 +93,6 @@ class _$UserInfoResponseSerializer
         case 'status':
           result.status = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
-          break;
-        case 'data':
-          result.userInfo.replace(serializers.deserialize(value,
-              specifiedType: const FullType(UserInfo)) as UserInfo);
           break;
         case 'meta':
           result.meta.replace(serializers.deserialize(value,
@@ -112,7 +113,9 @@ class _$UserInfoResponseSerializer
   }
 }
 
-class _$UserInfoResponse extends UserInfoResponse {
+class _$SendStepsResponse extends SendStepsResponse {
+  @override
+  final SendStepsRequest request;
   @override
   final String message;
   @override
@@ -120,44 +123,42 @@ class _$UserInfoResponse extends UserInfoResponse {
   @override
   final String status;
   @override
-  final UserInfo userInfo;
-  @override
   final Meta meta;
   @override
   final ErrorModel error;
   @override
   final int httpCode;
 
-  factory _$UserInfoResponse(
-          [void Function(UserInfoResponseBuilder) updates]) =>
-      (new UserInfoResponseBuilder()..update(updates)).build();
+  factory _$SendStepsResponse(
+          [void Function(SendStepsResponseBuilder) updates]) =>
+      (new SendStepsResponseBuilder()..update(updates)).build();
 
-  _$UserInfoResponse._(
-      {this.message,
+  _$SendStepsResponse._(
+      {this.request,
+      this.message,
       this.timestamp,
       this.status,
-      this.userInfo,
       this.meta,
       this.error,
       this.httpCode})
       : super._();
 
   @override
-  UserInfoResponse rebuild(void Function(UserInfoResponseBuilder) updates) =>
+  SendStepsResponse rebuild(void Function(SendStepsResponseBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  UserInfoResponseBuilder toBuilder() =>
-      new UserInfoResponseBuilder()..replace(this);
+  SendStepsResponseBuilder toBuilder() =>
+      new SendStepsResponseBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is UserInfoResponse &&
+    return other is SendStepsResponse &&
+        request == other.request &&
         message == other.message &&
         timestamp == other.timestamp &&
         status == other.status &&
-        userInfo == other.userInfo &&
         meta == other.meta &&
         error == other.error &&
         httpCode == other.httpCode;
@@ -169,9 +170,9 @@ class _$UserInfoResponse extends UserInfoResponse {
         $jc(
             $jc(
                 $jc(
-                    $jc($jc($jc(0, message.hashCode), timestamp.hashCode),
-                        status.hashCode),
-                    userInfo.hashCode),
+                    $jc($jc($jc(0, request.hashCode), message.hashCode),
+                        timestamp.hashCode),
+                    status.hashCode),
                 meta.hashCode),
             error.hashCode),
         httpCode.hashCode));
@@ -179,11 +180,11 @@ class _$UserInfoResponse extends UserInfoResponse {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('UserInfoResponse')
+    return (newBuiltValueToStringHelper('SendStepsResponse')
+          ..add('request', request)
           ..add('message', message)
           ..add('timestamp', timestamp)
           ..add('status', status)
-          ..add('userInfo', userInfo)
           ..add('meta', meta)
           ..add('error', error)
           ..add('httpCode', httpCode))
@@ -191,11 +192,16 @@ class _$UserInfoResponse extends UserInfoResponse {
   }
 }
 
-class UserInfoResponseBuilder
+class SendStepsResponseBuilder
     implements
-        Builder<UserInfoResponse, UserInfoResponseBuilder>,
+        Builder<SendStepsResponse, SendStepsResponseBuilder>,
         BaseModelBuilder {
-  _$UserInfoResponse _$v;
+  _$SendStepsResponse _$v;
+
+  SendStepsRequestBuilder _request;
+  SendStepsRequestBuilder get request =>
+      _$this._request ??= new SendStepsRequestBuilder();
+  set request(SendStepsRequestBuilder request) => _$this._request = request;
 
   String _message;
   String get message => _$this._message;
@@ -209,10 +215,6 @@ class UserInfoResponseBuilder
   String get status => _$this._status;
   set status(String status) => _$this._status = status;
 
-  UserInfoBuilder _userInfo;
-  UserInfoBuilder get userInfo => _$this._userInfo ??= new UserInfoBuilder();
-  set userInfo(UserInfoBuilder userInfo) => _$this._userInfo = userInfo;
-
   MetaBuilder _meta;
   MetaBuilder get meta => _$this._meta ??= new MetaBuilder();
   set meta(MetaBuilder meta) => _$this._meta = meta;
@@ -225,14 +227,14 @@ class UserInfoResponseBuilder
   int get httpCode => _$this._httpCode;
   set httpCode(int httpCode) => _$this._httpCode = httpCode;
 
-  UserInfoResponseBuilder();
+  SendStepsResponseBuilder();
 
-  UserInfoResponseBuilder get _$this {
+  SendStepsResponseBuilder get _$this {
     if (_$v != null) {
+      _request = _$v.request?.toBuilder();
       _message = _$v.message;
       _timestamp = _$v.timestamp;
       _status = _$v.status;
-      _userInfo = _$v.userInfo?.toBuilder();
       _meta = _$v.meta?.toBuilder();
       _error = _$v.error?.toBuilder();
       _httpCode = _$v.httpCode;
@@ -242,43 +244,44 @@ class UserInfoResponseBuilder
   }
 
   @override
-  void replace(covariant UserInfoResponse other) {
+  void replace(covariant SendStepsResponse other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$UserInfoResponse;
+    _$v = other as _$SendStepsResponse;
   }
 
   @override
-  void update(void Function(UserInfoResponseBuilder) updates) {
+  void update(void Function(SendStepsResponseBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$UserInfoResponse build() {
-    _$UserInfoResponse _$result;
+  _$SendStepsResponse build() {
+    _$SendStepsResponse _$result;
     try {
       _$result = _$v ??
-          new _$UserInfoResponse._(
+          new _$SendStepsResponse._(
+              request: _request?.build(),
               message: message,
               timestamp: timestamp,
               status: status,
-              userInfo: _userInfo?.build(),
               meta: _meta?.build(),
               error: _error?.build(),
               httpCode: httpCode);
     } catch (_) {
       String _$failedField;
       try {
-        _$failedField = 'userInfo';
-        _userInfo?.build();
+        _$failedField = 'request';
+        _request?.build();
+
         _$failedField = 'meta';
         _meta?.build();
         _$failedField = 'error';
         _error?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'UserInfoResponse', _$failedField, e.toString());
+            'SendStepsResponse', _$failedField, e.toString());
       }
       rethrow;
     }

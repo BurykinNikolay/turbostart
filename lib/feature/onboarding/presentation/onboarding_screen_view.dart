@@ -38,7 +38,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
         ),
         Column(
           children: [
-            SizedBox(height: 100),
+            SizedBox(height: 70),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -74,7 +74,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
         ),
       ),
       Column(children: [
-        SizedBox(height: 100),
+        SizedBox(height: 70),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -148,7 +148,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
         child: Column(
           children: [
             Image.asset('assets/5k_logo.png', width: 140.0),
-            SizedBox(height: 150),
+            SizedBox(height: MediaQuery.of(context).viewInsets.bottom == 00 ? 100 : 150),
             Expanded(
               child: Stack(
                 children: [
@@ -198,9 +198,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
                         decoration: pageDecoration,
                       ),
                     ],
-                    onDone: () {
-                      print("end");
-                    },
+                    onDone: () {},
                     showSkipButton: false,
                     showNextButton: false,
                     skipFlex: 0,
@@ -233,6 +231,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
                 ),
               ),
             ),
+            SizedBox(height: 10),
           ],
         ),
       ),
