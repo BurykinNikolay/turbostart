@@ -12,7 +12,7 @@ class PedometerScreenBloc extends BaseBloc {
 
   Steps get todaySteps => healthState.steps?.first;
 
-  List<Steps> get lastWeekSteps => steps.getRange(0, DateTime.now().weekday).toList();
+  List<Steps> get lastWeekSteps => steps?.getRange(0, DateTime.now().weekday)?.toList() ?? <Steps>[];
 
   HealthState get healthState => store?.state?.healthState;
 

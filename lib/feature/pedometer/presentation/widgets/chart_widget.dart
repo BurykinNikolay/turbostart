@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_plot/flutter_plot.dart';
 import 'package:provider/provider.dart';
@@ -17,10 +15,14 @@ class _ChartWidgetState extends State<ChartWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final data = bloc.getChartData();
+    if (data.isEmpty) {
+      return Text("Данных нет");
+    }
     return Plot(
       padding: EdgeInsets.zero,
       height: 250.0,
-      data: bloc.getChartData(),
+      data: data,
       gridSize: new Offset(2.0, 2.0),
       style: new PlotStyle(
         pointRadius: 0.5,
