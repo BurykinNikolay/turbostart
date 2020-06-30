@@ -20,14 +20,20 @@ class HomeScreenBloc extends BaseBloc {
     appTabSubscription = store.nextSubstate((AppState state) => state.activeTab).listen((_) async {
       _currentPageController.add(activeTab);
     });
+    responseStepsAndInfo();
+  }
+
+  void responseStepsAndInfo() {
+    actions.health.getStepsForLastTwoWeek();
+    actions.login.getUserInfo();
   }
 
   @override
   void dispose() {
     super.dispose();
-    _currentPageController.close();
-    appTabSubscription.cancel();
-    appThemeSubscription.cancel();
+    _currentPageController?.close();
+    appTabSubscription?.cancel();
+    appThemeSubscription?.cancel();
   }
 
   void updateTab(AppTab tab) {

@@ -16,8 +16,24 @@ class HomeScreenView extends StatefulWidget {
   _HomeScreenViewState createState() => _HomeScreenViewState();
 }
 
-class _HomeScreenViewState extends State<HomeScreenView> {
+class _HomeScreenViewState extends State<HomeScreenView> with WidgetsBindingObserver {
   HomeScreenBloc get bloc => Provider.of<HomeScreenBloc>(context);
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    bloc.responseStepsAndInfo();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+  }
 
   final List<Widget> _pagesList = [
     PedometerScreen(),

@@ -39,6 +39,7 @@ dependencies:
   introduction_screen: 1.0.8
   flutter_plot:
   path_provider: ^1.6.9
+  health: 1.0.2+2
 
 dev_dependencies:
   flutter_test:

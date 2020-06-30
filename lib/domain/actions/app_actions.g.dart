@@ -18,6 +18,7 @@ class _$AppActions extends AppActions {
 
   final navigation = new NavigationActions();
   final login = new LoginActions();
+  final health = new HealthActions();
 
   @override
   void setDispatcher(Dispatcher dispatcher) {
@@ -25,6 +26,7 @@ class _$AppActions extends AppActions {
 
     navigation.setDispatcher(dispatcher);
     login.setDispatcher(dispatcher);
+    health.setDispatcher(dispatcher);
   }
 }
 

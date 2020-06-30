@@ -16,6 +16,9 @@ class _AppBootstrapper extends AppBootstrapper {
     final container = this.base();
     container.register<LoginEpic>((c) => LoginEpic(c.get<LoginRepository>()),
         defaultMode: InjectMode.unspecified);
+    container.register<SendStepsEpic>(
+        (c) => SendStepsEpic(c.get<HealthRepository>()),
+        defaultMode: InjectMode.unspecified);
     container.register<AuthInterceptor>((c) => AuthInterceptor(),
         defaultMode: InjectMode.unspecified);
     container.register<Client>((c) => Client(),
@@ -30,6 +33,10 @@ class _AppBootstrapper extends AppBootstrapper {
         defaultMode: InjectMode.unspecified);
     container.register<LoginRepository>(
         (c) => LoginRepositoryImpl(
+            c.get<StoreProvider>(), c.get<RestService>(), c.get<UrlFactory>()),
+        defaultMode: InjectMode.unspecified);
+    container.register<HealthRepository>(
+        (c) => HealthRepositoryImpl(
             c.get<StoreProvider>(), c.get<RestService>(), c.get<UrlFactory>()),
         defaultMode: InjectMode.unspecified);
     return container;

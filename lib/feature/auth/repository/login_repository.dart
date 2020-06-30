@@ -79,19 +79,22 @@ LoginResponse mapLoginRestBundle(RestBundle bundle) {
     return LoginResponse((builder) => builder.httpCode = bundle.status);
   }
   try {
-    LoginResponse response = serializers.deserializeWith(bundle.serializer, jsonDecode(bundle?.data ?? ""));
-    return response.rebuild((builder) => builder.httpCode = bundle.status);
+    final json = jsonDecode(bundle?.data ?? "");
+    LoginResponse response = serializers.deserializeWith(bundle.serializer, json["data"]);
+    return response.rebuild((builder) => builder
+      ..httpCode = bundle.status
+      ..status = json["status"]);
   } catch (err) {
     final json = jsonDecode(bundle?.data ?? "");
     logger.e("mapRestBundle $err");
     return LoginResponse((builder) => builder
       ..httpCode = bundle.status
+      ..status = json["status"]
       ..message = json["message"].toString());
   }
 }
 
 UserInfoResponse mapGetUserInfoRestBundle(RestBundle bundle) {
-  print(bundle.data);
   if (bundle.status == 302) {
     return UserInfoResponse((builder) => builder.httpCode = bundle.status);
   }

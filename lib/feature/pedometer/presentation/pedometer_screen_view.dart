@@ -75,78 +75,88 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                       ],
                     ),
                     SizedBox(height: 56.57),
-                    Row(
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Column(
-                            children: [
-                              Text(localizations.today, style: theme.boldBlack25),
-                              SizedBox(height: 9),
-                              Text("420", style: theme.boldGreen40),
-                            ],
-                          ),
-                        ),
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: Column(
-                            children: [
-                              Text(localizations.total, style: theme.boldBlack25),
-                              SizedBox(height: 9),
-                              Text("420000", style: theme.boldGreen40),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(height: 50.6),
-                    Text(localizations.mySteps, style: theme.boldBlack25),
-                    SizedBox(height: 26.6),
-                    Row(
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              color: Colors.transparent,
-                              child: Center(
-                                child: Text(localizations.week, style: theme.normalBlack18),
-                              ),
-                            ),
-                          ),
-                        ),
-                        Flexible(
-                            flex: 1,
-                            fit: FlexFit.tight,
-                            child: GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                color: Colors.transparent,
-                                child: Center(
-                                  child: Text(localizations.month, style: theme.normalGray18),
+                    StreamBuilder(
+                      stream: bloc.stepsStreamController.stream,
+                      initialData: bloc.steps,
+                      builder: (context, snapshot) {
+                        return Column(
+                          children: [
+                            Row(
+                              children: [
+                                Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: Column(
+                                    children: [
+                                      Text(localizations.today, style: theme.boldBlack25),
+                                      SizedBox(height: 9),
+                                      Text("${bloc.countOfTodaySteps}", style: theme.boldGreen40),
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            )),
-                        Flexible(
-                          flex: 1,
-                          fit: FlexFit.tight,
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              color: Colors.transparent,
-                              child: Center(
-                                child: Text(localizations.allTime, style: theme.normalGray18),
-                              ),
+                                Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: Column(
+                                    children: [
+                                      Text(localizations.total, style: theme.boldBlack25),
+                                      SizedBox(height: 9),
+                                      Text("420000", style: theme.boldGreen40),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          ),
-                        ),
-                      ],
+                            SizedBox(height: 50.6),
+                            Text(localizations.mySteps, style: theme.boldBlack25),
+                            SizedBox(height: 26.6),
+                            Row(
+                              children: [
+                                Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                      color: Colors.transparent,
+                                      child: Center(
+                                        child: Text(localizations.week, style: theme.normalBlack18),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                    flex: 1,
+                                    fit: FlexFit.tight,
+                                    child: GestureDetector(
+                                      onTap: () {},
+                                      child: Container(
+                                        color: Colors.transparent,
+                                        child: Center(
+                                          child: Text(localizations.month, style: theme.normalGray18),
+                                        ),
+                                      ),
+                                    )),
+                                Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: GestureDetector(
+                                    onTap: () {},
+                                    child: Container(
+                                      color: Colors.transparent,
+                                      child: Center(
+                                        child: Text(localizations.allTime, style: theme.normalGray18),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            ChartWidget(),
+                          ],
+                        );
+                      },
                     ),
-                    ChartWidget(),
                     LegendPlace(),
                   ],
                 ),

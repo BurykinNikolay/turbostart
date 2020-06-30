@@ -9,7 +9,6 @@ import 'package:logger/logger.dart';
 import 'package:turbostart/feature/home/home.dart';
 
 import 'app_starter.dart' as starter;
-import 'domain/domain.dart';
 import 'feature/auth/presentation/auth_screen.dart';
 import 'feature/logger/logger.dart';
 import 'l10n/localizations.dart';

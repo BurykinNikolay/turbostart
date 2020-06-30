@@ -61,6 +61,8 @@ void _setUserInfoResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> a
 void _logout(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<void> action) async {
   next(action);
 
+  api.actions.navigation.routeTo(AppRoute((builder) => builder.route = Routes.login));
+
   _saveAppState(api);
 }
 

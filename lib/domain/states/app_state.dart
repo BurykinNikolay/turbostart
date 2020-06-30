@@ -1,6 +1,7 @@
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 import 'package:turbostart/feature/auth/domain/login_state.dart';
+import 'package:turbostart/feature/health/domain/health_state.dart';
 import 'package:turbostart/feature/navigation/navigation.dart';
 
 import '../domain.dart';
@@ -18,6 +19,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
       ..loginState = LoginState((builder) => builder).toBuilder()
       ..userState = UserState((builder) => builder).toBuilder()
       ..navigationState = NavigationState((builder) => builder).toBuilder()
+      ..healthState = HealthState((builder) => builder).toBuilder()
       ..apiUrl = "xn--80ab3bgdedecc0h.xn--p1ai"
       ..update(updates));
   }
@@ -29,6 +31,8 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   LoginState get loginState;
 
   UserState get userState;
+
+  HealthState get healthState;
 
   @nullable
   String get apiUrl;
