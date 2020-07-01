@@ -40,6 +40,8 @@ dependencies:
   flutter_plot:
   path_provider: ^1.6.9
   health: 1.0.2+2
+  utf:
+
 
 dev_dependencies:
   flutter_test:

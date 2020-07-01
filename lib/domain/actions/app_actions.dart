@@ -2,6 +2,7 @@ import 'package:built_redux/built_redux.dart';
 import 'package:turbostart/feature/auth/domain/login_actions.dart';
 import 'package:turbostart/feature/health/health.dart';
 import 'package:turbostart/feature/navigation/navigation.dart';
+import 'package:turbostart/feature/pedometer/pedometer.dart';
 
 import '../domain.dart';
 
@@ -17,6 +18,8 @@ abstract class AppActions extends ReduxActions {
   LoginActions get login;
 
   HealthActions get health;
+
+  PedometerActions get pedometer;
 
   ActionDispatcher<AppTab> get updateTab;
 }

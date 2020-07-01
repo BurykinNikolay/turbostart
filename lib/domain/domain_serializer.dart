@@ -4,6 +4,7 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'package:turbostart/feature/auth/domain/login_domain.dart';
 import 'package:turbostart/feature/health/domain/health_state.dart';
 import 'package:turbostart/feature/navigation/domain/navigation_domain.dart';
+import 'package:turbostart/feature/pedometer/pedometer.dart';
 
 import 'domain.dart';
 import 'models/steps.dart';
@@ -22,5 +23,6 @@ part 'domain_serializer.g.dart';
   Steps,
   StepsState,
   StepsData,
+  PedometerState,
 ])
 final Serializers serializers = (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
