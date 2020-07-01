@@ -10,15 +10,19 @@ import 'package:turbostart/di/provider/store_provider.dart';
 import 'package:turbostart/feature/logger/logger.dart';
 import 'package:turbostart/utilities/isolate_manager/isolate_manager_mixin.dart';
 
+import 'endpoint/get_steps_endpoint.dart';
 import 'endpoint/send_steps_endpoint.dart';
+import 'models/get_steps_response.dart';
 import 'models/send_steps_request.dart';
 import 'models/send_steps_response.dart';
 
+export 'models/get_steps_response.dart';
 export 'models/send_steps_request.dart';
 export 'models/send_steps_response.dart';
 
 abstract class HealthRepository {
   Stream<SendStepsResponse> sendSteps({SendStepsRequest request, Duration timeout});
+  Stream<GetStepsResponse> getSteps({Duration timeout});
 }
 
 class HealthRepositoryImpl with IsolateManagerMixin implements HealthRepository {
@@ -47,6 +51,21 @@ class HealthRepositoryImpl with IsolateManagerMixin implements HealthRepository 
     final url = _urlFactory.createFor<SendStepsEndpoint>(endpoint);
     executeRestRequest(input, output, _restService, url, request, SendStepsResponse.serializer, timeout);
   }
+
+  @override
+  Stream<GetStepsResponse> getSteps({Duration timeout}) {
+    final inputSubject = BehaviorSubject<RestBundle>();
+    final outputSubject = BehaviorSubject<GetStepsResponse>();
+    subscribe(inputSubject, outputSubject, mapGetStepsRestBundle);
+    _makeGetStepsRequest(input: inputSubject, output: outputSubject, timeout: timeout);
+    return outputSubject.map((output) => output.rebuild((b) => b));
+  }
+
+  void _makeGetStepsRequest({Subject<RestBundle> input, Subject output, Duration timeout}) {
+    final endpoint = GetStepsEndpoint(storeProvider: _storeProvider);
+    final url = _urlFactory.createFor<GetStepsEndpoint>(endpoint);
+    executeRestStringRequest(input, output, _restService, url, "", GetStepsResponse.serializer, timeout);
+  }
 }
 
 SendStepsResponse mapSendStepsRestBundle(RestBundle bundle) {
@@ -63,6 +82,26 @@ SendStepsResponse mapSendStepsRestBundle(RestBundle bundle) {
     final json = jsonDecode(bundle?.data ?? "");
     logger.e("mapRestBundle $err");
     return SendStepsResponse((builder) => builder
+      ..httpCode = bundle.status
+      ..status = json["status"]
+      ..message = json["message"].toString());
+  }
+}
+
+GetStepsResponse mapGetStepsRestBundle(RestBundle bundle) {
+  if (bundle.status == 302) {
+    return GetStepsResponse((builder) => builder.httpCode = bundle.status);
+  }
+  try {
+    final json = jsonDecode(bundle?.data ?? "");
+    GetStepsResponse response = serializers.deserializeWith(bundle.serializer, json);
+    return response.rebuild((builder) => builder
+      ..httpCode = bundle.status
+      ..status = json["status"]);
+  } catch (err) {
+    final json = jsonDecode(bundle?.data ?? "");
+    logger.e("mapRestBundle $err");
+    return GetStepsResponse((builder) => builder
       ..httpCode = bundle.status
       ..status = json["status"]
       ..message = json["message"].toString());

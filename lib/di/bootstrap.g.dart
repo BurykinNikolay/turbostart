@@ -19,6 +19,9 @@ class _AppBootstrapper extends AppBootstrapper {
     container.register<SendStepsEpic>(
         (c) => SendStepsEpic(c.get<HealthRepository>()),
         defaultMode: InjectMode.unspecified);
+    container.register<GetStepsEpic>(
+        (c) => GetStepsEpic(c.get<HealthRepository>()),
+        defaultMode: InjectMode.unspecified);
     container.register<AuthInterceptor>((c) => AuthInterceptor(),
         defaultMode: InjectMode.unspecified);
     container.register<Client>((c) => Client(),

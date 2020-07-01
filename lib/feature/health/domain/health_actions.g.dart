@@ -18,20 +18,22 @@ class _$HealthActions extends HealthActions {
       new ActionDispatcher<void>('HealthActions-getStepsForAllTime');
   final getStepsForCurrentDay =
       new ActionDispatcher<void>('HealthActions-getStepsForCurrentDay');
-  final getStepsForLastTwoWeek =
-      new ActionDispatcher<void>('HealthActions-getStepsForLastTwoWeek');
-  final setSteps =
-      new ActionDispatcher<BuiltList<Steps>>('HealthActions-setSteps');
+  final getLocalStepsAndSend =
+      new ActionDispatcher<void>('HealthActions-getLocalStepsAndSend');
+  final setStepsState =
+      new ActionDispatcher<StepsState>('HealthActions-setStepsState');
   final sendSteps =
       new ActionDispatcher<SendStepsRequest>('HealthActions-sendSteps');
+  final getSteps = new ActionDispatcher<void>('HealthActions-getSteps');
 
   @override
   void setDispatcher(Dispatcher dispatcher) {
     getStepsForAllTime.setDispatcher(dispatcher);
     getStepsForCurrentDay.setDispatcher(dispatcher);
-    getStepsForLastTwoWeek.setDispatcher(dispatcher);
-    setSteps.setDispatcher(dispatcher);
+    getLocalStepsAndSend.setDispatcher(dispatcher);
+    setStepsState.setDispatcher(dispatcher);
     sendSteps.setDispatcher(dispatcher);
+    getSteps.setDispatcher(dispatcher);
   }
 }
 
@@ -40,10 +42,11 @@ class HealthActionsNames {
       new ActionName<void>('HealthActions-getStepsForAllTime');
   static final getStepsForCurrentDay =
       new ActionName<void>('HealthActions-getStepsForCurrentDay');
-  static final getStepsForLastTwoWeek =
-      new ActionName<void>('HealthActions-getStepsForLastTwoWeek');
-  static final setSteps =
-      new ActionName<BuiltList<Steps>>('HealthActions-setSteps');
+  static final getLocalStepsAndSend =
+      new ActionName<void>('HealthActions-getLocalStepsAndSend');
+  static final setStepsState =
+      new ActionName<StepsState>('HealthActions-setStepsState');
   static final sendSteps =
       new ActionName<SendStepsRequest>('HealthActions-sendSteps');
+  static final getSteps = new ActionName<void>('HealthActions-getSteps');
 }

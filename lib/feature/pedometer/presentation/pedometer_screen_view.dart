@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:turbostart/domain/domain.dart';
 import 'package:turbostart/feature/pedometer/presentation/widgets/chart_widget.dart';
 import 'package:turbostart/feature/pedometer/presentation/widgets/turbo_tab_bar.dart';
 import 'package:turbostart/l10n/localizations.dart';
@@ -75,10 +76,11 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                       ],
                     ),
                     SizedBox(height: 56.57),
-                    StreamBuilder(
-                      stream: bloc.stepsStreamController.stream,
-                      initialData: bloc.steps,
+                    StreamBuilder<StepsState>(
+                      stream: bloc.stepsStateStreamController.stream,
+                      initialData: bloc.stepsState,
                       builder: (context, snapshot) {
+                        final stepsState = snapshot.data;
                         return Column(
                           children: [
                             Row(
@@ -90,7 +92,7 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                                     children: [
                                       Text(localizations.today, style: theme.boldBlack25),
                                       SizedBox(height: 9),
-                                      Text("${bloc.countOfTodaySteps}", style: theme.boldGreen40),
+                                      Text("${cupertinoTabBarValue == 0 ? stepsState?.stepsUserToday : stepsState?.stepsMacroregionToday}", style: theme.boldGreen40),
                                     ],
                                   ),
                                 ),
@@ -101,14 +103,14 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                                     children: [
                                       Text(localizations.total, style: theme.boldBlack25),
                                       SizedBox(height: 9),
-                                      Text("420000", style: theme.boldGreen40),
+                                      Text("${cupertinoTabBarValue == 0 ? stepsState?.stepsUserAll : stepsState?.stepsMacroregionAll}", style: theme.boldGreen40),
                                     ],
                                   ),
                                 ),
                               ],
                             ),
                             SizedBox(height: 50.6),
-                            Text(localizations.mySteps, style: theme.boldBlack25),
+                            Text(cupertinoTabBarValue == 0 ? localizations.mySteps : localizations.stepsOfMacroregion, style: theme.boldBlack25),
                             SizedBox(height: 26.6),
                             Row(
                               children: [

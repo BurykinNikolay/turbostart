@@ -34,6 +34,12 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       serializers.serialize(object.healthState,
           specifiedType: const FullType(HealthState)),
     ];
+    if (object.stepsState != null) {
+      result
+        ..add('stepsState')
+        ..add(serializers.serialize(object.stepsState,
+            specifiedType: const FullType(StepsState)));
+    }
     if (object.apiUrl != null) {
       result
         ..add('apiUrl')
@@ -75,6 +81,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.healthState.replace(serializers.deserialize(value,
               specifiedType: const FullType(HealthState)) as HealthState);
           break;
+        case 'stepsState':
+          result.stepsState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(StepsState)) as StepsState);
+          break;
         case 'apiUrl':
           result.apiUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -98,6 +108,8 @@ class _$AppState extends AppState {
   @override
   final HealthState healthState;
   @override
+  final StepsState stepsState;
+  @override
   final String apiUrl;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
@@ -109,6 +121,7 @@ class _$AppState extends AppState {
       this.loginState,
       this.userState,
       this.healthState,
+      this.stepsState,
       this.apiUrl})
       : super._() {
     if (activeTab == null) {
@@ -144,6 +157,7 @@ class _$AppState extends AppState {
         loginState == other.loginState &&
         userState == other.userState &&
         healthState == other.healthState &&
+        stepsState == other.stepsState &&
         apiUrl == other.apiUrl;
   }
 
@@ -152,10 +166,14 @@ class _$AppState extends AppState {
     return $jf($jc(
         $jc(
             $jc(
-                $jc($jc($jc(0, activeTab.hashCode), navigationState.hashCode),
-                    loginState.hashCode),
-                userState.hashCode),
-            healthState.hashCode),
+                $jc(
+                    $jc(
+                        $jc($jc(0, activeTab.hashCode),
+                            navigationState.hashCode),
+                        loginState.hashCode),
+                    userState.hashCode),
+                healthState.hashCode),
+            stepsState.hashCode),
         apiUrl.hashCode));
   }
 
@@ -167,6 +185,7 @@ class _$AppState extends AppState {
           ..add('loginState', loginState)
           ..add('userState', userState)
           ..add('healthState', healthState)
+          ..add('stepsState', stepsState)
           ..add('apiUrl', apiUrl))
         .toString();
   }
@@ -202,6 +221,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set healthState(HealthStateBuilder healthState) =>
       _$this._healthState = healthState;
 
+  StepsStateBuilder _stepsState;
+  StepsStateBuilder get stepsState =>
+      _$this._stepsState ??= new StepsStateBuilder();
+  set stepsState(StepsStateBuilder stepsState) =>
+      _$this._stepsState = stepsState;
+
   String _apiUrl;
   String get apiUrl => _$this._apiUrl;
   set apiUrl(String apiUrl) => _$this._apiUrl = apiUrl;
@@ -215,6 +240,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _loginState = _$v.loginState?.toBuilder();
       _userState = _$v.userState?.toBuilder();
       _healthState = _$v.healthState?.toBuilder();
+      _stepsState = _$v.stepsState?.toBuilder();
       _apiUrl = _$v.apiUrl;
       _$v = null;
     }
@@ -245,6 +271,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               loginState: loginState.build(),
               userState: userState.build(),
               healthState: healthState.build(),
+              stepsState: _stepsState?.build(),
               apiUrl: apiUrl);
     } catch (_) {
       String _$failedField;
@@ -257,6 +284,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         userState.build();
         _$failedField = 'healthState';
         healthState.build();
+        _$failedField = 'stepsState';
+        _stepsState?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

@@ -20,5 +20,7 @@ part 'domain_serializer.g.dart';
   NavigationState,
   HealthState,
   Steps,
+  StepsState,
+  StepsData,
 ])
 final Serializers serializers = (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();

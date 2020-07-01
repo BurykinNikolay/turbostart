@@ -17,3 +17,4 @@ const String getUser = '/api/getUser';
 
 //steps
 const String sendSteps = '/api/sendSteps';
+const String getSteps = '/api/getSteps';

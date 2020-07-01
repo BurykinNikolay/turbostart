@@ -20,6 +20,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
       ..userState = UserState((builder) => builder).toBuilder()
       ..navigationState = NavigationState((builder) => builder).toBuilder()
       ..healthState = HealthState((builder) => builder).toBuilder()
+      ..stepsState = StepsState((builder) => builder).toBuilder()
       ..apiUrl = "xn--80ab3bgdedecc0h.xn--p1ai"
       ..update(updates));
   }
@@ -33,6 +34,9 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
   UserState get userState;
 
   HealthState get healthState;
+
+  @nullable
+  StepsState get stepsState;
 
   @nullable
   String get apiUrl;

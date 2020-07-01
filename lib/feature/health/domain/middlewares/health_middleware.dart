@@ -1,4 +1,3 @@
-import 'package:built_collection/built_collection.dart';
 import 'package:built_redux/built_redux.dart';
 import 'package:flutter/foundation.dart';
 
@@ -11,31 +10,10 @@ import 'package:turbostart/feature/logger/logger.dart';
 import 'package:intl/intl.dart';
 
 MiddlewareBuilder<AppState, AppStateBuilder, AppActions> healthMiddleware() {
-  return MiddlewareBuilder<AppState, AppStateBuilder, AppActions>()
-    ..add(HealthActionsNames.getStepsForAllTime, _getStepsForAllTime)
-    ..add(HealthActionsNames.getStepsForCurrentDay, _getStepsForCurrentDay)
-    ..add(HealthActionsNames.setSteps, _setSteps)
-    ..add(HealthActionsNames.getStepsForLastTwoWeek, _getStepsForLastTwoWeek);
+  return MiddlewareBuilder<AppState, AppStateBuilder, AppActions>()..add(HealthActionsNames.getLocalStepsAndSend, _getLocalStepsAndSend);
 }
 
-void _getStepsForAllTime(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<void> action) async {
-  next(action);
-
-  List<HealthDataType> types = [
-    HealthDataType.STEPS,
-  ];
-
-  DateTime startDate = DateTime.utc(2020, 04, 01);
-  DateTime endDate = DateTime.now();
-
-  List<HealthDataPoint> healthData = await _getData(startDate, endDate);
-
-  if (healthData != null) {
-    final date = DateTime.fromMillisecondsSinceEpoch(healthData.first.dateFrom).toIso8601String();
-  }
-}
-
-void _getStepsForLastTwoWeek(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<void> action) {
+void _getLocalStepsAndSend(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<void> action) {
   next(action);
   List<HealthDataType> types = [
     HealthDataType.STEPS,
@@ -43,13 +21,14 @@ void _getStepsForLastTwoWeek(MiddlewareApi<AppState, AppStateBuilder, AppActions
   DateTime today = DateTime.now();
   DateTime twoWeekAgo = today.subtract(new Duration(days: 14));
   _getData(twoWeekAgo, today).then((healthData) {
-    compute(calculateStepsByDays, _BundleData(startDate: twoWeekAgo, endDate: today, healthData: healthData)).then((stepsList) {
-      if (healthData != null) {
-        api.actions.health.setSteps(
-          BuiltList<Steps>.from(stepsList),
-        );
-      }
-    });
+    compute(calculateStepsByDays, _BundleData(startDate: twoWeekAgo, endDate: today, healthData: healthData)).then(
+      (stepsList) {
+        if (healthData != null) {
+          final request = SendStepsRequest((builder) => builder.data.replace(stepsList));
+          api.actions.health.sendSteps(request);
+        }
+      },
+    );
   });
 }
 
@@ -77,21 +56,6 @@ List<Steps> calculateStepsByDays(_BundleData data) {
   return stepsList;
 }
 
-void _getStepsForCurrentDay(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<void> action) async {
-  next(action);
-  List<HealthDataType> types = [
-    HealthDataType.STEPS,
-  ];
-
-  DateTime today = new DateTime.now();
-
-  DateTime startDate = DateTime.now();
-  DateTime endDate = DateTime.now();
-  List<HealthDataPoint> healthData = await _getData(startDate, endDate);
-
-  if (healthData != null) {}
-}
-
 Future<List<HealthDataPoint>> _getData(DateTime startDate, DateTime endDate) async {
   bool isAuthorized = await Health.requestAuthorization();
   if (isAuthorized) {
@@ -105,13 +69,6 @@ Future<List<HealthDataPoint>> _getData(DateTime startDate, DateTime endDate) asy
   } else {
     return null;
   }
-}
-
-void _setSteps(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<BuiltList<Steps>> action) async {
-  next(action);
-
-  final request = SendStepsRequest((builder) => builder.data.replace(action.payload));
-  api.actions.health.sendSteps(request);
 }
 
 void _onError(error) => logger.e("Health Error: $error");
