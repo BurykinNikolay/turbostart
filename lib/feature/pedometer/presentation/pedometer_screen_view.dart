@@ -169,7 +169,10 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                       },
                     ),
                     SizedBox(height: 60),
-                    ChartWidget(),
+                    Container(
+                      height: 200 ,
+                      child: ChartWidget(),
+                    ),
                     SizedBox(height: 90),
                     LegendPlace(),
                   ],

@@ -39,25 +39,39 @@ class _ChartWidgetState extends State<ChartWidget> {
         return Transform.scale(
           scale: 1.4,
           child: SfCartesianChart(
-            margin: EdgeInsets.zero,
-            plotAreaBorderWidth: 0,
-            primaryYAxis: NumericAxis(
-              isVisible: false,
-            ),
-            primaryXAxis: DateTimeAxis(
-              
-              rangePadding: ChartRangePadding.additional,
-              intervalType: DateTimeIntervalType.auto,
-              interval: charModel.interval,
-              dateFormat: charModel.dateFormat,
-              isVisible: true,
-              axisLine: AxisLine(color: Colors.transparent),
-              placeLabelsNearAxisLine: true,
-              majorGridLines: MajorGridLines(
-                width: 0,
+            trackballBehavior: TrackballBehavior(
+              lineDashArray: [8,2],
+              lineColor: theme.gray,
+              enable: true,
+              activationMode: ActivationMode.singleTap,
+              lineType: TrackballLineType.vertical,
+              tooltipSettings: InteractiveTooltip(
+                format: 'point.x : point.y',
+                color: theme.white,
+                borderColor: theme.accentGray,
+                borderWidth: 2.0,
+                textStyle: ChartTextStyle(
+                  color: theme.black,
+                  fontSize: 10,
+                ),
               ),
             ),
-            series: <AreaSeries<StepsData, DateTime>>[
+            margin: EdgeInsets.zero,
+            plotAreaBorderWidth: 0,
+            primaryYAxis: NumericAxis(isVisible: false, edgeLabelPlacement: EdgeLabelPlacement.shift),
+            primaryXAxis: DateTimeAxis(
+                rangePadding: ChartRangePadding.additional,
+                intervalType: DateTimeIntervalType.auto,
+                interval: charModel.interval,
+                dateFormat: charModel.dateFormat,
+                isVisible: true,
+                axisLine: AxisLine(color: Colors.transparent),
+                placeLabelsNearAxisLine: true,
+                majorGridLines: MajorGridLines(
+                  width: 0,
+                ),
+                edgeLabelPlacement: EdgeLabelPlacement.shift),
+            series: <ChartSeries<StepsData, DateTime>>[
               AreaSeries<StepsData, DateTime>(
                 animationDuration: 0,
                 borderColor: theme.mainGreen,
@@ -68,10 +82,21 @@ class _ChartWidgetState extends State<ChartWidget> {
                 borderDrawMode: BorderDrawMode.top,
                 xValueMapper: (StepsData data, _) => DateFormat("dd.MM.yyyy").parse(data.date),
                 yValueMapper: (StepsData data, _) => int.parse(data.steps),
-              )
+              ),
+              // SplineSeries<StepsData, DateTime>(
+              //   animationDuration: 0,
+              //   // borderColor: theme.mainGreen,
+              //   enableTooltip: true,
+              //   //gradient: gradientColors,
+              //   color: theme.mainGreen,
+              //   dataSource: charModel.stepsData,
+              //   xValueMapper: (StepsData data, _) => DateFormat("dd.MM.yyyy").parse(data.date),
+              //   yValueMapper: (StepsData data, _) => int.parse(data.steps),
+              // )
             ],
             tooltipBehavior: TooltipBehavior(
-                enable: true,
+                tooltipPosition: TooltipPosition.auto,
+                enable: false,
                 header: '',
                 canShowMarker: false,
                 color: theme.white,
