@@ -39,7 +39,6 @@ void _setLoginResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
       AppRoute((builder) => builder..route = Routes.onboarding),
     );
     api.actions.login.getUserInfo();
-    _saveAppState(api);
   } else {
     api.actions.navigation.showDialog(DialogBundle((builder) => builder
       ..dialog = Dialogs.alert
@@ -54,7 +53,6 @@ void _setUserInfoResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> a
 
   if (userInfoResponse.status == _success) {
     api.actions.login.setUserInfo(userInfoResponse.userInfo);
-    _saveAppState(api);
   }
 }
 
@@ -62,10 +60,4 @@ void _logout(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHan
   next(action);
 
   api.actions.navigation.routeTo(AppRoute((builder) => builder.route = Routes.login));
-
-  _saveAppState(api);
-}
-
-void _saveAppState(MiddlewareApi<AppState, AppStateBuilder, AppActions> api) async {
-  await starter.dbStorage.saveAppState(api.state);
 }

@@ -2,6 +2,7 @@ import 'package:built_redux/built_redux.dart';
 import 'package:turbostart/domain/models/user_info.dart';
 import 'package:turbostart/domain/states/user_state.dart';
 import 'package:turbostart/feature/auth/domain/login_domain.dart';
+import 'package:turbostart/feature/health/health.dart';
 
 import '../domain.dart';
 
@@ -12,6 +13,7 @@ NestedReducerBuilder<AppState, AppStateBuilder, AppState, AppStateBuilder> creat
   )
     ..add(AppActionsNames.updateTab, _updateTab)
     ..add<UserInfo>(LoginActionsNames.setUserInfo, _setUserInfo)
+    ..add<StepsState>(HealthActionsNames.setStepsState, _setStepsState)
     ..add(LoginActionsNames.logout, _logout);
 }
 
@@ -27,10 +29,17 @@ void _logout(
   Action<void> action,
   AppStateBuilder builder,
 ) =>
-    builder.userState.replace(UserState());
+    builder..userState.replace(UserState())..stepsState.replace(StepsState());
 void _setUserInfo(
   AppState state,
   Action<UserInfo> action,
   AppStateBuilder builder,
 ) =>
     builder.userState..userInfo.replace(action.payload);
+
+void _setStepsState(
+  AppState state,
+  Action<StepsState> action,
+  AppStateBuilder builder,
+) =>
+    builder.stepsState.replace(action.payload);

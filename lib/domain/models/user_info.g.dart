@@ -72,6 +72,13 @@ class _$UserInfoSerializer implements StructuredSerializer<UserInfo> {
         ..add(serializers.serialize(object.macroregionName,
             specifiedType: const FullType(String)));
     }
+    if (object.macroregionAvatars != null) {
+      result
+        ..add('macroregion_avatars')
+        ..add(serializers.serialize(object.macroregionAvatars,
+            specifiedType:
+                const FullType(BuiltList, const [const FullType(String)])));
+    }
     return result;
   }
 
@@ -122,6 +129,12 @@ class _$UserInfoSerializer implements StructuredSerializer<UserInfo> {
           result.macroregionName = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'macroregion_avatars':
+          result.macroregionAvatars.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(String)]))
+              as BuiltList<dynamic>);
+          break;
       }
     }
 
@@ -148,6 +161,8 @@ class _$UserInfo extends UserInfo {
   final int macroregionId;
   @override
   final String macroregionName;
+  @override
+  final BuiltList<String> macroregionAvatars;
 
   factory _$UserInfo([void Function(UserInfoBuilder) updates]) =>
       (new UserInfoBuilder()..update(updates)).build();
@@ -161,7 +176,8 @@ class _$UserInfo extends UserInfo {
       this.place,
       this.steps,
       this.macroregionId,
-      this.macroregionName})
+      this.macroregionName,
+      this.macroregionAvatars})
       : super._();
 
   @override
@@ -183,7 +199,8 @@ class _$UserInfo extends UserInfo {
         place == other.place &&
         steps == other.steps &&
         macroregionId == other.macroregionId &&
-        macroregionName == other.macroregionName;
+        macroregionName == other.macroregionName &&
+        macroregionAvatars == other.macroregionAvatars;
   }
 
   @override
@@ -194,14 +211,16 @@ class _$UserInfo extends UserInfo {
                 $jc(
                     $jc(
                         $jc(
-                            $jc($jc($jc(0, id.hashCode), login.hashCode),
-                                name.hashCode),
-                            img.hashCode),
-                        rating.hashCode),
-                    place.hashCode),
-                steps.hashCode),
-            macroregionId.hashCode),
-        macroregionName.hashCode));
+                            $jc(
+                                $jc($jc($jc(0, id.hashCode), login.hashCode),
+                                    name.hashCode),
+                                img.hashCode),
+                            rating.hashCode),
+                        place.hashCode),
+                    steps.hashCode),
+                macroregionId.hashCode),
+            macroregionName.hashCode),
+        macroregionAvatars.hashCode));
   }
 
   @override
@@ -215,7 +234,8 @@ class _$UserInfo extends UserInfo {
           ..add('place', place)
           ..add('steps', steps)
           ..add('macroregionId', macroregionId)
-          ..add('macroregionName', macroregionName))
+          ..add('macroregionName', macroregionName)
+          ..add('macroregionAvatars', macroregionAvatars))
         .toString();
   }
 }
@@ -260,6 +280,12 @@ class UserInfoBuilder implements Builder<UserInfo, UserInfoBuilder> {
   set macroregionName(String macroregionName) =>
       _$this._macroregionName = macroregionName;
 
+  ListBuilder<String> _macroregionAvatars;
+  ListBuilder<String> get macroregionAvatars =>
+      _$this._macroregionAvatars ??= new ListBuilder<String>();
+  set macroregionAvatars(ListBuilder<String> macroregionAvatars) =>
+      _$this._macroregionAvatars = macroregionAvatars;
+
   UserInfoBuilder();
 
   UserInfoBuilder get _$this {
@@ -273,6 +299,7 @@ class UserInfoBuilder implements Builder<UserInfo, UserInfoBuilder> {
       _steps = _$v.steps;
       _macroregionId = _$v.macroregionId;
       _macroregionName = _$v.macroregionName;
+      _macroregionAvatars = _$v.macroregionAvatars?.toBuilder();
       _$v = null;
     }
     return this;
@@ -293,17 +320,31 @@ class UserInfoBuilder implements Builder<UserInfo, UserInfoBuilder> {
 
   @override
   _$UserInfo build() {
-    final _$result = _$v ??
-        new _$UserInfo._(
-            id: id,
-            login: login,
-            name: name,
-            img: img,
-            rating: rating,
-            place: place,
-            steps: steps,
-            macroregionId: macroregionId,
-            macroregionName: macroregionName);
+    _$UserInfo _$result;
+    try {
+      _$result = _$v ??
+          new _$UserInfo._(
+              id: id,
+              login: login,
+              name: name,
+              img: img,
+              rating: rating,
+              place: place,
+              steps: steps,
+              macroregionId: macroregionId,
+              macroregionName: macroregionName,
+              macroregionAvatars: _macroregionAvatars?.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'macroregionAvatars';
+        _macroregionAvatars?.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'UserInfo', _$failedField, e.toString());
+      }
+      rethrow;
+    }
     replace(_$result);
     return _$result;
   }

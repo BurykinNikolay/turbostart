@@ -19,15 +19,6 @@ class _ProfileScreenViewState extends State<ProfileScreenView> {
   ProfileScreenBloc get bloc => Provider.of<ProfileScreenBloc>(context);
   AppLocalizations get localizations => AppLocalizations.of(context);
 
-  final testAvatars = [
-    'https://d2ph5fj80uercy.cloudfront.net/06/cat4.jpg',
-    'https://d2ph5fj80uercy.cloudfront.net/05/cat2384.jpg',
-    'https://d2ph5fj80uercy.cloudfront.net/05/cat2338.jpg',
-    'https://d2ph5fj80uercy.cloudfront.net/04/cat4428.jpg',
-    'https://d2ph5fj80uercy.cloudfront.net/04/cat2122.jpg',
-    'https://d2ph5fj80uercy.cloudfront.net/04/cat722.jpg'
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -107,7 +98,7 @@ class _ProfileScreenViewState extends State<ProfileScreenView> {
                           SizedBox(height: 60.0),
                           Text(localizations.myMacroregion, style: theme.boldBlack25),
                           SizedBox(height: 17.35),
-                          ParticipantsPlace(participantsAvatarLinks: testAvatars),
+                          ParticipantsPlace(participantsAvatarLinks: userInfo.macroregionAvatars.toList()),
                           SizedBox(height: 11.68),
                           Text(userInfo.place.toString() + " " + localizations.placeInGeneralSetOff, style: theme.boldGreen20),
                           SizedBox(height: 100.00),

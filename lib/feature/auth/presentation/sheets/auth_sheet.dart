@@ -34,12 +34,12 @@ class __AuthSheetViewState extends State<_AuthSheetView> {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      SizedBox(height: 178),
+      SizedBox(height: 120),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 37.0),
         child: _loginAndPasswordForm(),
       ),
-      SizedBox(height: 132),
+      SizedBox(height: 122),
       StreamBuilder<LoginScreenStatus>(
         stream: bloc.loginScreenStatusController.stream,
         initialData: bloc.loginScreenStatus,

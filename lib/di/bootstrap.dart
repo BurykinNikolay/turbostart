@@ -17,6 +17,7 @@ part 'bootstrap.g.dart';
 abstract class AppBootstrapper extends Bootstrapper {
   @Provide(LoginEpic, LoginEpic)
   @Provide(SendStepsEpic, SendStepsEpic)
+  @Provide(GetStepsEpic, GetStepsEpic)
   @Provide(AuthInterceptor, AuthInterceptor)
   @Provide(Client, Client, defaultMode: InjectMode.singleton)
   @Provide(RestService, RestServiceImpl, defaultMode: InjectMode.singleton)

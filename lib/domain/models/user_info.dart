@@ -1,5 +1,6 @@
 library user_info;
 
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -37,6 +38,10 @@ abstract class UserInfo implements Built<UserInfo, UserInfoBuilder> {
   @nullable
   @BuiltValueField(wireName: 'macroregion_name')
   String get macroregionName;
+
+  @nullable
+  @BuiltValueField(wireName: 'macroregion_avatars')
+  BuiltList<String> get macroregionAvatars;
 
   static Serializer<UserInfo> get serializer => _$userInfoSerializer;
 }

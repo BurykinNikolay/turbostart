@@ -24,7 +24,8 @@ class HomeScreenBloc extends BaseBloc {
   }
 
   void responseStepsAndInfo() {
-    actions.health.getStepsForLastTwoWeek();
+    actions.health.getLocalStepsAndSend();
+    actions.health.getSteps();
     actions.login.getUserInfo();
   }
 

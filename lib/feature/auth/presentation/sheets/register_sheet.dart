@@ -25,7 +25,7 @@ class _RegisterSheetView extends StatelessWidget {
     final localization = AppLocalizations.of(context);
 
     return Column(children: [
-      SizedBox(height: 235),
+      SizedBox(height: 200),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
