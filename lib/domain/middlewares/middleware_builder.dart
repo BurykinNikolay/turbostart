@@ -28,6 +28,7 @@ final List<void Function(Action<dynamic>) Function(void Function(Action<dynamic>
   createEpicMiddleware([
     _loginEpic.loginEpic,
     _loginEpic.getUserInfo,
+    _loginEpic.setPushToken,
     _sendStepsEpic.sendStepsEpic,
     _getStepsEpic.getStepsEpic,
   ])

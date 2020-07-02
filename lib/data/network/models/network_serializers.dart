@@ -7,6 +7,7 @@ import 'package:turbostart/domain/models/steps_data.dart';
 import 'package:turbostart/domain/models/user_info.dart';
 import 'package:turbostart/feature/auth/repository/login_repository.dart';
 import 'package:turbostart/feature/auth/repository/models/login_response.dart';
+import 'package:turbostart/feature/auth/repository/models/set_push_token_response.dart';
 import 'package:turbostart/feature/health/health.dart';
 
 import 'error_model.dart';
@@ -29,6 +30,7 @@ part 'network_serializers.g.dart';
   Steps,
   StepsState,
   StepsData,
+  SetPushTokenResponse,
 ])
 final Serializers serializers = (_$serializers.toBuilder()
       ..addPlugin(

@@ -5,7 +5,7 @@ import 'package:turbostart/feature/auth/domain/login_screen_status.dart';
 import 'package:turbostart/feature/auth/repository/login_repository.dart';
 import 'package:turbostart/feature/navigation/domain/app_route.dart';
 import 'package:turbostart/feature/navigation/navigation.dart';
-
+import 'package:turbostart/feature/push_service/push_service.dart';
 
 import '../login_actions.dart';
 
@@ -24,7 +24,7 @@ void _loginRequest(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, Act
   api.actions.login.setLoginScreenStatus(LoginScreenStatus.progress);
 }
 
-void _setLoginResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<LoginResponse> action) async {
+void _setLoginResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api, ActionHandler next, Action<LoginResponse> action) {
   next(action);
 
   final loginResponse = action.payload;
@@ -38,6 +38,7 @@ void _setLoginResponse(MiddlewareApi<AppState, AppStateBuilder, AppActions> api,
       AppRoute((builder) => builder..route = Routes.onboarding),
     );
     api.actions.login.getUserInfo();
+    PushService().init();
   } else {
     api.actions.navigation.showDialog(DialogBundle((builder) => builder
       ..dialog = Dialogs.alert
