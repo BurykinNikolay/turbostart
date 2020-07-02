@@ -14,6 +14,7 @@ const String prefix = '/sedd/api';
 //user
 const String login = '/api/login';
 const String getUser = '/api/getUser';
+const String pushToken = '/api/setToken';
 
 //steps
 const String sendSteps = '/api/sendSteps';

@@ -89,60 +89,20 @@ class LoginEpic {
     }).doOnData((userInfoResponse) {
       api.actions.login.setUserInfoResponse(userInfoResponse);
     }).handleError((exception) {
-      final timeout = [SocketException, OSError, TimeoutException];
+      logger.e('GetUserInfoError: $exception');
+    });
+  }
 
-      if (exception is TimeoutException) {
-        api.actions.login.setLoginError(
-          ErrorModel(
-            (builder) => builder..message = exception.message,
-          ),
-        );
-        final responseWithTimestamp = LoginResponse((builder) {
-          builder.error.replace(
-            ErrorModel(
-              (errorBuilder) => errorBuilder.message = exception.message,
-            ),
-          );
-          builder.timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-          return builder;
-        });
-        api.actions.login.setLoginResponse(responseWithTimestamp);
-      }
-      if (timeout.any((Type type) => exception.runtimeType == type)) {
-        api.actions.login.setLoginError(
-          ErrorModel(
-            (builder) => builder..message = exception.message,
-          ),
-        );
-        final responseWithTimestamp = LoginResponse((builder) {
-          builder.error.replace(ErrorModel((errorBuilder) => errorBuilder
-            ..message = exception.message
-            ..code = 800));
-          builder.timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-          return builder;
-        });
-        api.actions.login.setLoginResponse(responseWithTimestamp);
-      } else if (exception is LoginResponse) {
-        logger.e('caugth BetResponse: $exception');
-
-        var serverErrorText = exception.message;
-        if (exception != null && exception.httpCode == 500) {
-          serverErrorText = exception.message;
-        }
-        final responseWithTimestamp = LoginResponse((builder) {
-          builder.error.replace(ErrorModel((errorBuilder) => errorBuilder.message = serverErrorText));
-          builder.timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-          return builder;
-        });
-        api.actions.login.setLoginResponse(responseWithTimestamp);
-      } else {
-        final responseWithTimestamp = LoginResponse((builder) {
-          builder.error.replace(ErrorModel((errorBuilder) => errorBuilder.message = exception.message));
-          builder.timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-          return builder;
-        });
-        api.actions.login.setLoginResponse(responseWithTimestamp); //
-      }
+  Stream setPushToken(Stream<Action<dynamic>> stream, MiddlewareApi<AppState, AppStateBuilder, AppActions> api) {
+    return stream.where((action) => action.name == LoginActionsNames.setPushToken.name).cast<Action<String>>().switchMap((action) {
+      return _repository.setPushToken(
+        request: action.payload,
+        timeout: Duration(seconds: 20),
+      );
+    }).doOnData((sendStepsResponse) {
+      logger.i("SendStepsStatus: ${sendStepsResponse.status}");
+    }).handleError((exception) {
+      logger.e('SendStepsStatus: $exception');
     });
   }
 }

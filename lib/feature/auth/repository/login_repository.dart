@@ -7,6 +7,7 @@ import 'package:turbostart/data/network/models/rest_bundle.dart';
 import 'package:turbostart/data/network/service/rest_service.dart';
 import 'package:turbostart/data/network/url/url_factory.dart';
 import 'package:turbostart/di/provider/store_provider.dart';
+import 'package:turbostart/feature/auth/repository/endpoint/push_token_endpoint.dart';
 import 'package:turbostart/feature/logger/logger.dart';
 import 'package:turbostart/utilities/isolate_manager/isolate_manager_mixin.dart';
 
@@ -14,16 +15,19 @@ import 'endpoint/login_endpoint.dart';
 import 'endpoint/user_info_endpoint.dart';
 import 'models/login_request.dart';
 import 'models/login_response.dart';
+import 'models/set_push_token_response.dart';
 import 'models/user_info_response.dart';
 
 export 'models/login_request.dart';
 export 'models/login_response.dart';
+export 'models/user_info_response.dart';
 
 export 'models/user_info_response.dart';
 
 abstract class LoginRepository {
   Stream<LoginResponse> makeLoginRequest({LoginRequest request, Duration timeout});
   Stream<UserInfoResponse> getUserInfoRequest({Duration timeout});
+  Stream<SetPushTokenResponse> setPushToken({String request, Duration timeout});
 }
 
 class LoginRepositoryImpl with IsolateManagerMixin implements LoginRepository {
@@ -38,11 +42,8 @@ class LoginRepositoryImpl with IsolateManagerMixin implements LoginRepository {
   @Inject()
   final UrlFactory _urlFactory;
 
-  LoginRequest request;
-
   @override
   Stream<LoginResponse> makeLoginRequest({LoginRequest request, Duration timeout}) {
-    this.request = request;
     final inputSubject = BehaviorSubject<RestBundle>();
     final outputSubject = BehaviorSubject<LoginResponse>();
     subscribe(inputSubject, outputSubject, mapLoginRestBundle);
@@ -59,7 +60,6 @@ class LoginRepositoryImpl with IsolateManagerMixin implements LoginRepository {
 
   @override
   Stream<UserInfoResponse> getUserInfoRequest({Duration timeout}) {
-    this.request = request;
     final inputSubject = BehaviorSubject<RestBundle>();
     final outputSubject = BehaviorSubject<UserInfoResponse>();
     subscribe(inputSubject, outputSubject, mapGetUserInfoRestBundle);
@@ -71,6 +71,21 @@ class LoginRepositoryImpl with IsolateManagerMixin implements LoginRepository {
     final endpoint = UserInfoEndpoint(storeProvider: _storeProvider);
     final url = _urlFactory.createFor<UserInfoEndpoint>(endpoint);
     executeRestStringRequest(input, output, _restService, url, "", UserInfoResponse.serializer, timeout);
+  }
+
+  @override
+  Stream<SetPushTokenResponse> setPushToken({String request, Duration timeout}) {
+    final inputSubject = BehaviorSubject<RestBundle>();
+    final outputSubject = BehaviorSubject<SetPushTokenResponse>();
+    subscribe(inputSubject, outputSubject, mapSetPushResponseRestBundle);
+    _setPushTokenRequest(input: inputSubject, token: request, output: outputSubject, timeout: timeout);
+    return outputSubject.map((output) => output);
+  }
+
+  void _setPushTokenRequest({Subject<RestBundle> input, String token, Subject output, Duration timeout}) {
+    final endpoint = PushTokenEndpoint(storeProvider: _storeProvider);
+    final url = _urlFactory.createFor<PushTokenEndpoint>(endpoint);
+    executeRestStringRequest(input, output, _restService, url, "token=$token", SetPushTokenResponse.serializer, timeout);
   }
 }
 
@@ -105,6 +120,22 @@ UserInfoResponse mapGetUserInfoRestBundle(RestBundle bundle) {
     final json = jsonDecode(bundle?.data ?? "");
     logger.e("mapRestBundle $err");
     return UserInfoResponse((builder) => builder
+      ..httpCode = bundle.status
+      ..message = json["message"].toString());
+  }
+}
+
+SetPushTokenResponse mapSetPushResponseRestBundle(RestBundle bundle) {
+  if (bundle.status == 302) {
+    return SetPushTokenResponse((builder) => builder.httpCode = bundle.status);
+  }
+  try {
+    SetPushTokenResponse response = serializers.deserializeWith(bundle.serializer, jsonDecode(bundle?.data ?? ""));
+    return response.rebuild((builder) => builder.httpCode = bundle.status);
+  } catch (err) {
+    final json = jsonDecode(bundle?.data ?? "");
+    logger.e("mapRestBundle $err");
+    return SetPushTokenResponse((builder) => builder
       ..httpCode = bundle.status
       ..message = json["message"].toString());
   }
