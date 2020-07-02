@@ -32,6 +32,8 @@ class _$LoginActions extends LoginActions {
   final setUserInfo =
       new ActionDispatcher<UserInfo>('LoginActions-setUserInfo');
   final logout = new ActionDispatcher<void>('LoginActions-logout');
+  final setPushToken =
+      new ActionDispatcher<String>('LoginActions-setPushToken');
 
   @override
   void setDispatcher(Dispatcher dispatcher) {
@@ -45,6 +47,7 @@ class _$LoginActions extends LoginActions {
     getUserInfo.setDispatcher(dispatcher);
     setUserInfo.setDispatcher(dispatcher);
     logout.setDispatcher(dispatcher);
+    setPushToken.setDispatcher(dispatcher);
   }
 }
 
@@ -67,4 +70,6 @@ class LoginActionsNames {
   static final setUserInfo =
       new ActionName<UserInfo>('LoginActions-setUserInfo');
   static final logout = new ActionName<void>('LoginActions-logout');
+  static final setPushToken =
+      new ActionName<String>('LoginActions-setPushToken');
 }

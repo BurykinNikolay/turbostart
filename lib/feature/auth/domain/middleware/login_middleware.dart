@@ -6,8 +6,6 @@ import 'package:turbostart/feature/auth/repository/login_repository.dart';
 import 'package:turbostart/feature/navigation/domain/app_route.dart';
 import 'package:turbostart/feature/navigation/navigation.dart';
 
-import '../../../../app_starter.dart' as starter;
-
 import '../login_actions.dart';
 
 const _success = "success";

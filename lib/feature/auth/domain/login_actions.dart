@@ -24,4 +24,5 @@ abstract class LoginActions extends ReduxActions {
   ActionDispatcher<void> get getUserInfo;
   ActionDispatcher<UserInfo> get setUserInfo;
   ActionDispatcher<void> get logout;
+  ActionDispatcher<String> get setPushToken;
 }
