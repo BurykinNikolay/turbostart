@@ -29,7 +29,7 @@ class _ChartWidgetState extends State<ChartWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final data = bloc.stepsState.stepsUserData.toList();
+    final data = bloc?.stepsState?.stepsUserData?.toList() ?? <StepsData>[];
 
     return StreamBuilder<ChartModel>(
       stream: bloc.chartModelStreamController.stream,

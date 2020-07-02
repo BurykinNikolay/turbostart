@@ -102,10 +102,10 @@ class PedometerScreenBloc extends BaseBloc {
     double interval;
     switch (pedometerType) {
       case PedometerTypes.iam:
-        stepsData = stepsState.stepsUserData.reversed.toList();
+        stepsData = stepsState?.stepsUserData?.reversed?.toList() ?? <StepsData>[];
         break;
       case PedometerTypes.macroregion:
-        stepsData = stepsState.stepsMacroregionData.reversed.toList();
+        stepsData = stepsState.stepsMacroregionData.reversed.toList() ?? <StepsData>[];
         break;
     }
     switch (timePeriodTypes) {
