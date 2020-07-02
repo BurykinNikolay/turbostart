@@ -41,6 +41,8 @@ dependencies:
   path_provider: ^1.6.9
   health: 1.0.2+2
   firebase_messaging: 6.0.16
+  utf:
+
 
 dev_dependencies:
   flutter_test:

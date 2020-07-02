@@ -40,6 +40,12 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
         ..add(serializers.serialize(object.stepsState,
             specifiedType: const FullType(StepsState)));
     }
+    if (object.pedometerState != null) {
+      result
+        ..add('pedometerState')
+        ..add(serializers.serialize(object.pedometerState,
+            specifiedType: const FullType(PedometerState)));
+    }
     if (object.apiUrl != null) {
       result
         ..add('apiUrl')
@@ -85,6 +91,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.stepsState.replace(serializers.deserialize(value,
               specifiedType: const FullType(StepsState)) as StepsState);
           break;
+        case 'pedometerState':
+          result.pedometerState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(PedometerState)) as PedometerState);
+          break;
         case 'apiUrl':
           result.apiUrl = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
@@ -110,6 +120,8 @@ class _$AppState extends AppState {
   @override
   final StepsState stepsState;
   @override
+  final PedometerState pedometerState;
+  @override
   final String apiUrl;
 
   factory _$AppState([void Function(AppStateBuilder) updates]) =>
@@ -122,6 +134,7 @@ class _$AppState extends AppState {
       this.userState,
       this.healthState,
       this.stepsState,
+      this.pedometerState,
       this.apiUrl})
       : super._() {
     if (activeTab == null) {
@@ -158,6 +171,7 @@ class _$AppState extends AppState {
         userState == other.userState &&
         healthState == other.healthState &&
         stepsState == other.stepsState &&
+        pedometerState == other.pedometerState &&
         apiUrl == other.apiUrl;
   }
 
@@ -168,12 +182,14 @@ class _$AppState extends AppState {
             $jc(
                 $jc(
                     $jc(
-                        $jc($jc(0, activeTab.hashCode),
-                            navigationState.hashCode),
-                        loginState.hashCode),
-                    userState.hashCode),
-                healthState.hashCode),
-            stepsState.hashCode),
+                        $jc(
+                            $jc($jc(0, activeTab.hashCode),
+                                navigationState.hashCode),
+                            loginState.hashCode),
+                        userState.hashCode),
+                    healthState.hashCode),
+                stepsState.hashCode),
+            pedometerState.hashCode),
         apiUrl.hashCode));
   }
 
@@ -186,6 +202,7 @@ class _$AppState extends AppState {
           ..add('userState', userState)
           ..add('healthState', healthState)
           ..add('stepsState', stepsState)
+          ..add('pedometerState', pedometerState)
           ..add('apiUrl', apiUrl))
         .toString();
   }
@@ -227,6 +244,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set stepsState(StepsStateBuilder stepsState) =>
       _$this._stepsState = stepsState;
 
+  PedometerStateBuilder _pedometerState;
+  PedometerStateBuilder get pedometerState =>
+      _$this._pedometerState ??= new PedometerStateBuilder();
+  set pedometerState(PedometerStateBuilder pedometerState) =>
+      _$this._pedometerState = pedometerState;
+
   String _apiUrl;
   String get apiUrl => _$this._apiUrl;
   set apiUrl(String apiUrl) => _$this._apiUrl = apiUrl;
@@ -241,6 +264,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _userState = _$v.userState?.toBuilder();
       _healthState = _$v.healthState?.toBuilder();
       _stepsState = _$v.stepsState?.toBuilder();
+      _pedometerState = _$v.pedometerState?.toBuilder();
       _apiUrl = _$v.apiUrl;
       _$v = null;
     }
@@ -272,6 +296,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
               userState: userState.build(),
               healthState: healthState.build(),
               stepsState: _stepsState?.build(),
+              pedometerState: _pedometerState?.build(),
               apiUrl: apiUrl);
     } catch (_) {
       String _$failedField;
@@ -286,6 +311,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         healthState.build();
         _$failedField = 'stepsState';
         _stepsState?.build();
+        _$failedField = 'pedometerState';
+        _pedometerState?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

@@ -3,6 +3,7 @@ import 'package:built_value/serializer.dart';
 import 'package:turbostart/feature/auth/domain/login_state.dart';
 import 'package:turbostart/feature/health/domain/health_state.dart';
 import 'package:turbostart/feature/navigation/navigation.dart';
+import 'package:turbostart/feature/pedometer/pedometer.dart';
 
 import '../domain.dart';
 import '../domain_serializer.dart';
@@ -20,6 +21,7 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
       ..userState = UserState((builder) => builder).toBuilder()
       ..navigationState = NavigationState((builder) => builder).toBuilder()
       ..healthState = HealthState((builder) => builder).toBuilder()
+      ..pedometerState = PedometerState((builder) => builder).toBuilder()
       ..stepsState = StepsState((builder) => builder).toBuilder()
       ..apiUrl = "xn--80ab3bgdedecc0h.xn--p1ai"
       ..update(updates));
@@ -37,6 +39,9 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
 
   @nullable
   StepsState get stepsState;
+
+  @nullable
+  PedometerState get pedometerState;
 
   @nullable
   String get apiUrl;

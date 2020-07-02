@@ -3,6 +3,7 @@ import 'package:turbostart/domain/models/user_info.dart';
 import 'package:turbostart/domain/states/user_state.dart';
 import 'package:turbostart/feature/auth/domain/login_domain.dart';
 import 'package:turbostart/feature/health/health.dart';
+import 'package:turbostart/feature/pedometer/pedometer.dart';
 
 import '../domain.dart';
 
@@ -29,7 +30,7 @@ void _logout(
   Action<void> action,
   AppStateBuilder builder,
 ) =>
-    builder..userState.replace(UserState())..stepsState.replace(StepsState());
+    builder..userState.replace(UserState())..stepsState.replace(StepsState())..pedometerState.replace(PedometerState());
 void _setUserInfo(
   AppState state,
   Action<UserInfo> action,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:turbostart/domain/domain.dart';
+import 'package:turbostart/feature/pedometer/pedometer.dart';
 import 'package:turbostart/feature/pedometer/presentation/widgets/chart_widget.dart';
 import 'package:turbostart/feature/pedometer/presentation/widgets/turbo_tab_bar.dart';
 import 'package:turbostart/l10n/localizations.dart';
@@ -19,9 +20,6 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
   PedometerScreenBloc get bloc => Provider.of<PedometerScreenBloc>(context);
 
   AppLocalizations get localizations => AppLocalizations.of(context);
-
-  int cupertinoTabBarValue = 0;
-  int cupertinoTabBarValueGetter() => cupertinoTabBarValue;
 
   @override
   Widget build(BuildContext context) {
@@ -43,36 +41,41 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TurboTabBar(
-                          backgroundColor: theme.lightGray,
-                          foregroundColor: theme.mainGreen,
-                          valueGetter: cupertinoTabBarValueGetter,
-                          onTap: (int index) {
-                            setState(() {
-                              cupertinoTabBarValue = index;
-                            });
-                          },
-                          widgets: [
-                            Container(
-                              color: Colors.transparent,
-                              child: Center(
-                                child: Text(localizations.iam, style: cupertinoTabBarValue == 0 ? theme.boldWhite20 : theme.boldGray20),
-                              ),
-                            ),
-                            Container(
-                              color: Colors.transparent,
-                              child: Center(
-                                child: Text(
-                                  localizations.macroregion,
-                                  style: cupertinoTabBarValue == 1 ? theme.boldWhite20 : theme.boldGray20,
+                        StreamBuilder<PedometerState>(
+                          stream: bloc.pedometerStateStreamController.stream,
+                          initialData: bloc.pedometerState,
+                          builder: (context, snapshot) {
+                            final pedometerState = snapshot.data;
+                            return TurboTabBar(
+                              backgroundColor: theme.lightGray,
+                              foregroundColor: theme.mainGreen,
+                              valueGetter: bloc.cupertinoTabBarValueGetter,
+                              onTap: (int index) {
+                                bloc.setPedometerType(index);
+                              },
+                              widgets: [
+                                Container(
+                                  color: Colors.transparent,
+                                  child: Center(
+                                    child: Text(localizations.iam, style: pedometerState.pedometerType == PedometerTypes.iam ? theme.boldWhite20 : theme.boldGray20),
+                                  ),
                                 ),
-                              ),
-                            )
-                          ],
-                          useSeparators: false,
-                          borderRadius: const BorderRadius.all(const Radius.circular(18.0)),
-                          duration: const Duration(milliseconds: 100),
-                        )
+                                Container(
+                                  color: Colors.transparent,
+                                  child: Center(
+                                    child: Text(
+                                      localizations.macroregion,
+                                      style: pedometerState.pedometerType == PedometerTypes.macroregion ? theme.boldWhite20 : theme.boldGray20,
+                                    ),
+                                  ),
+                                )
+                              ],
+                              useSeparators: false,
+                              borderRadius: const BorderRadius.all(const Radius.circular(18.0)),
+                              duration: const Duration(milliseconds: 100),
+                            );
+                          },
+                        ),
                       ],
                     ),
                     SizedBox(height: 56.57),
@@ -81,6 +84,7 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                       initialData: bloc.stepsState,
                       builder: (context, snapshot) {
                         final stepsState = snapshot.data;
+                        final cupertinoTabBarValue = bloc.cupertinoTabBarValueGetter();
                         return Column(
                           children: [
                             Row(
@@ -118,11 +122,13 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                                   flex: 1,
                                   fit: FlexFit.tight,
                                   child: GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      bloc.setTimePeriodType(TimePeriodTypes.week);
+                                    },
                                     child: Container(
                                       color: Colors.transparent,
                                       child: Center(
-                                        child: Text(localizations.week, style: theme.normalBlack18),
+                                        child: Text(localizations.week, style: bloc.timePeriodTypes == TimePeriodTypes.week ? theme.normalBlack18 : theme.normalGray18),
                                       ),
                                     ),
                                   ),
@@ -131,11 +137,13 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                                     flex: 1,
                                     fit: FlexFit.tight,
                                     child: GestureDetector(
-                                      onTap: () {},
+                                      onTap: () {
+                                        bloc.setTimePeriodType(TimePeriodTypes.month);
+                                      },
                                       child: Container(
                                         color: Colors.transparent,
                                         child: Center(
-                                          child: Text(localizations.month, style: theme.normalGray18),
+                                          child: Text(localizations.month, style: bloc.timePeriodTypes == TimePeriodTypes.month ? theme.normalBlack18 : theme.normalGray18),
                                         ),
                                       ),
                                     )),
@@ -143,22 +151,29 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                                   flex: 1,
                                   fit: FlexFit.tight,
                                   child: GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      bloc.setTimePeriodType(TimePeriodTypes.allTime);
+                                    },
                                     child: Container(
                                       color: Colors.transparent,
                                       child: Center(
-                                        child: Text(localizations.allTime, style: theme.normalGray18),
+                                        child: Text(localizations.allTime, style: bloc.timePeriodTypes == TimePeriodTypes.allTime ? theme.normalBlack18 : theme.normalGray18),
                                       ),
                                     ),
                                   ),
                                 ),
                               ],
                             ),
-                            ChartWidget(),
                           ],
                         );
                       },
                     ),
+                    SizedBox(height: 60),
+                    Container(
+                      height: 200 ,
+                      child: ChartWidget(),
+                    ),
+                    SizedBox(height: 90),
                     LegendPlace(),
                   ],
                 ),
