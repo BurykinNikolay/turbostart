@@ -3,8 +3,10 @@ import 'dart:async';
 import 'package:turbostart/domain/domain.dart';
 import 'package:turbostart/feature/auth/domain/login_screen_status.dart';
 import 'package:turbostart/feature/auth/repository/login_repository.dart';
+import 'package:turbostart/feature/logger/logger.dart';
 import 'package:turbostart/feature/navigation/navigation.dart';
 import 'package:turbostart/presentation/base/base_bloc.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart' hide LoginRequest;
 
 class AuthScreenBloc extends BaseBloc {
   StreamController<LoginScreenStatus> loginScreenStatusController;
@@ -43,7 +45,13 @@ class AuthScreenBloc extends BaseBloc {
     );
   }
 
-  void openRegisterSite() {}
+  void openRegisterSite() {
+    _openInBrowser("https://xn--80ab3bgdedecc0h.xn--p1ai/signup");
+  }
+
+  void openFAQSite() {
+    _openInBrowser("https://xn--80ab3bgdedecc0h.xn--p1ai/faq");
+  }
 
   void _sinkLoginScreenStatus() {
     loginScreenStatusController.add(loginScreenStatus);
@@ -56,6 +64,20 @@ class AuthScreenBloc extends BaseBloc {
         ..userName = login
         ..password = password);
       actions.login.loginRequest(loginRequest);
+    }
+  }
+
+  void _openInBrowser(String url) async {
+    final chromeSafariBrowser = ChromeSafariBrowser();
+    final options = ChromeSafariBrowserClassOptions(android: AndroidChromeCustomTabsOptions(), ios: IOSSafariOptions());
+    try {
+      await chromeSafariBrowser.open(
+        url: url,
+        options: options,
+      );
+    } catch (error) {
+      logger.e(error);
+      throw 'Could not launch $url';
     }
   }
 }

@@ -35,8 +35,10 @@ class _RegisterSheetView extends StatelessWidget {
             width: 44,
             height: 44,
             child: Center(
-              child: Icon(TurbostartIcons.alarm, color: theme.mainGreen,)
-            ),
+                child: Icon(
+              TurbostartIcons.alarm,
+              color: theme.mainGreen,
+            )),
           ),
           SizedBox(width: 13.0),
           Text(
@@ -71,9 +73,17 @@ class _RegisterSheetView extends StatelessWidget {
         ),
       ),
       SizedBox(height: 95),
-      Text(
-        localization.haveAProblem,
-        style: theme.lightGreen16,
+      GestureDetector(
+        onTap: () => bloc.openFAQSite(),
+        child: Container(
+          color: Colors.transparent,
+          child: Center(
+            child: Text(
+              localization.haveAProblem,
+              style: theme.lightGreen16,
+            ),
+          ),
+        ),
       ),
       SizedBox(height: 47),
     ]);

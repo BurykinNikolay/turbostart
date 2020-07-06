@@ -1,4 +1,4 @@
-package com.application.turbostart
+package com.pyaterochka.turbostarts
 
 import io.flutter.embedding.android.FlutterActivity
 

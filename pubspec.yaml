@@ -42,6 +42,7 @@ dependencies:
   health: 1.0.2+2
   firebase_messaging: 6.0.16
   utf:
+  flutter_inappwebview: 4.0.0+4
 
 
 dev_dependencies:

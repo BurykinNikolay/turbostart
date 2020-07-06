@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "166799077275",
+    "firebase_url": "https://turbostarts-app.firebaseio.com",
+    "project_id": "turbostarts-app",
+    "storage_bucket": "turbostarts-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:166799077275:android:43b9fa9b314eb6fb23bb3e",
+        "android_client_info": {
+          "package_name": "com.pyaterochka.turbostarts"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "166799077275-v479ibrmmu705e5qqjugnnadjqa8mgs8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNemFv6bOYb61YrpCE645rCQCyp0iTIi0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "166799077275-v479ibrmmu705e5qqjugnnadjqa8mgs8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "166799077275-0go6918a66qr0qn0mh5vt15sh381nkf4.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.pyaterochka.turbostarts"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
