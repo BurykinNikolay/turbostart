@@ -40,7 +40,7 @@ class _ChartWidgetState extends State<ChartWidget> {
           scale: 1.4,
           child: SfCartesianChart(
             trackballBehavior: TrackballBehavior(
-              lineDashArray: [8,2],
+              lineDashArray: [8, 2],
               lineColor: theme.gray,
               enable: true,
               activationMode: ActivationMode.singleTap,

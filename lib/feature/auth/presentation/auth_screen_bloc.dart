@@ -68,7 +68,7 @@ class AuthScreenBloc extends BaseBloc {
   }
 
   void _openInBrowser(String url) async {
-    final chromeSafariBrowser = ChromeSafariBrowser();
+    final chromeSafariBrowser = ChromeSafariBrowser(bFallback: InAppBrowser());
     final options = ChromeSafariBrowserClassOptions(android: AndroidChromeCustomTabsOptions(), ios: IOSSafariOptions());
     try {
       await chromeSafariBrowser.open(
