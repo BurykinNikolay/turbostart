@@ -55,9 +55,17 @@ class __AuthSheetViewState extends State<_AuthSheetView> {
         },
       ),
       SizedBox(height: 95),
-      Text(
-        localizations.forgotPassword,
-        style: theme.lightGreen16,
+      GestureDetector(
+        onTap: () => bloc.openRecoverSite(),
+        child: Container(
+          color: Colors.transparent,
+          child: Center(
+            child: Text(
+              localizations.forgotPassword,
+              style: theme.lightGreen16,
+            ),
+          ),
+        ),
       ),
       SizedBox(height: 47),
     ]);

@@ -52,6 +52,7 @@ class _MyAppState extends State<MyApp> {
     return ReduxProvider(
       store: starter.store,
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         navigatorKey: starter.store.state.navigationState.rootNavigatorKey,
         title: 'Turbostart',
         theme: lightTheme(context),

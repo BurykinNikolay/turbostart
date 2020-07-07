@@ -67,6 +67,10 @@ class AuthScreenBloc extends BaseBloc {
     }
   }
 
+  void openRecoverSite() {
+    _openInBrowser("https://xn--80ab3bgdedecc0h.xn--p1ai/recover");
+  }
+
   void _openInBrowser(String url) async {
     final chromeSafariBrowser = ChromeSafariBrowser(bFallback: InAppBrowser());
     final options = ChromeSafariBrowserClassOptions(android: AndroidChromeCustomTabsOptions(), ios: IOSSafariOptions());
