@@ -224,5 +224,10 @@
   "@makeYourContribution": {
     "type": "text",
     "placeholders": {}
-  }
+  },
+  "competitionRules": "Регламент проведения конкурса",
+  "@competitionRules": {
+    "type": "text",
+    "placeholders": {}
+  },
 }

@@ -42,6 +42,7 @@ class _AuthScreenViewState extends State<AuthScreenView> {
             Expanded(
               child: AuthButtonsPlace(),
             ),
+            //SizedBox(height: 95),
           ],
         ),
       ),

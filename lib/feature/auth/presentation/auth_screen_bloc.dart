@@ -49,6 +49,11 @@ class AuthScreenBloc extends BaseBloc {
     _openInBrowser("https://xn--80ab3bgdedecc0h.xn--p1ai/signup");
   }
 
+  void openCompetitionRulesSite() {
+    //OpenFile.open('https://xn--80ab3bgdedecc0h.xn--p1ai/rules_app.pdf');
+    _openInBrowser("https://xn--80ab3bgdedecc0h.xn--p1ai/rules_app.pdf");
+  }
+
   void openFAQSite() {
     _openInBrowser("https://xn--80ab3bgdedecc0h.xn--p1ai/faq");
   }

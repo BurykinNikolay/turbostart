@@ -35,6 +35,17 @@ class AuthButtonsPlace extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 30),
+        GestureDetector(
+          onTap: () => bloc.openCompetitionRulesSite(),
+          child: Container(
+            color: Colors.transparent,
+            child: Text(
+              localization.competitionRules,
+              style: theme.lightGreen16,
+            ),
+          ),
+        ),
       ]),
     );
   }

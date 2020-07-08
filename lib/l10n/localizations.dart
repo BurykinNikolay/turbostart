@@ -202,6 +202,10 @@ class AppLocalizations {
   String get makeYourContribution {
     return Intl.message('Make your contribution to a big deal!', name: 'makeYourContribution');
   }
+
+  String get competitionRules {
+    return Intl.message('Competition rules', name: 'competitionRules');
+  }
 }
 
 /// Used to provide resources to app

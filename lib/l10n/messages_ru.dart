@@ -65,6 +65,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "together" : MessageLookupByLibrary.simpleMessage("Все вместе"),
     "total" : MessageLookupByLibrary.simpleMessage("Всего"),
     "turbostarts" : MessageLookupByLibrary.simpleMessage("ТУРБО\nСТАРТЫ"),
-    "week" : MessageLookupByLibrary.simpleMessage("Неделя")
+    "week" : MessageLookupByLibrary.simpleMessage("Неделя"),
+    "competitionRules" : MessageLookupByLibrary.simpleMessage("Регламент проведения конкурса")
   };
 }
