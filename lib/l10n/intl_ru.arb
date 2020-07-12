@@ -70,7 +70,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "moveAndAccumulateSteps": "Двигайся\nи накапливай шаги",
+  "moveAndAccumulateSteps": "Двигайтесь\nи накапливайте шаги",
   "@moveAndAccumulateSteps": {
     "type": "text",
     "placeholders": {}
@@ -80,7 +80,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "teamVictoryYourVictory": "Победа команды —\nтвоя победа!",
+  "teamVictoryYourVictory": "Победа команды —\nваша победа!",
   "@teamVictoryYourVictory": {
     "type": "text",
     "placeholders": {}
@@ -215,12 +215,12 @@
     "type": "text",
     "placeholders": {}
   },
-  "tenThousand": "Каждые 10 000 шагов конвертируются\nв 1 рубль, а все собранные средства\nидут в благотворительный фонд поддержки\nдетей-спортсменов с ограниченными\nвозможностями.",
+  "tenThousand": "Все шаги конвертируются в рубли и идут в\nблаготворительный фонд поддержки\nдетей-спортсменов с ограниченными\nвозможностями.",
   "@tenThousand": {
     "type": "text",
     "placeholders": {}
   },
-  "makeYourContribution": "Внеси свой вклад\nв большое дело!",
+  "makeYourContribution": "Внесите свой вклад\nв большое дело!",
   "@makeYourContribution": {
     "type": "text",
     "placeholders": {}
