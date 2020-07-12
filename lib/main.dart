@@ -52,6 +52,12 @@ class _MyAppState extends State<MyApp> {
     return ReduxProvider(
       store: starter.store,
       child: MaterialApp(
+        builder: (context, child) {
+          return MediaQuery(
+            child: child,
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+          );
+        },
         debugShowCheckedModeBanner: false,
         navigatorKey: starter.store.state.navigationState.rootNavigatorKey,
         title: 'Turbostart',

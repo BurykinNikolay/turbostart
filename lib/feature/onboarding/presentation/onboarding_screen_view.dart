@@ -188,7 +188,7 @@ class _OnboardingScreenViewState extends State<OnboardingScreenView> {
                             children: <TextSpan>[
                               TextSpan(
                                 text: '\n' + localization.together,
-                                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17),
+                                style: const TextStyle(fontSize: 17),
                               ),
                             ],
                           ),

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2020-06-26T20:53:29.710155",
+  "@@last_modified": "2020-07-13T01:02:28.034931",
   "simpleText": "Simple Text",
   "@simpleText": {
     "type": "text",
@@ -222,6 +222,11 @@
   },
   "makeYourContribution": "Make your contribution to a big deal!",
   "@makeYourContribution": {
+    "type": "text",
+    "placeholders": {}
+  },
+  "competitionRules": "Competition rules",
+  "@competitionRules": {
     "type": "text",
     "placeholders": {}
   }

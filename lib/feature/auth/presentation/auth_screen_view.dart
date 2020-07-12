@@ -34,15 +34,21 @@ class _AuthScreenViewState extends State<AuthScreenView> {
                 width: MediaQuery.of(context).size.width,
               ),
             ),
-            Container(
-              color: Colors.green,
-              height: MediaQuery.of(context).size.width * 0.95,
-              child: AuthBackgroundMiddlePart(),
-            ),
             Expanded(
-              child: AuthButtonsPlace(),
+              child: Container(
+                color: theme.mainGreen,
+                child: Column(children: [
+                  Container(
+                    color: Colors.transparent,
+                    height: MediaQuery.of(context).size.height * 0.45,
+                    child: AuthBackgroundMiddlePart(),
+                  ),
+                  Expanded(
+                    child: AuthButtonsPlace(),
+                  ),
+                ]),
+              ),
             ),
-            //SizedBox(height: 95),
           ],
         ),
       ),

@@ -35,7 +35,9 @@ class AuthButtonsPlace extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 30),
+        Expanded(
+          child: Container(),
+        ),
         GestureDetector(
           onTap: () => bloc.openCompetitionRulesSite(),
           child: Container(
@@ -46,6 +48,7 @@ class AuthButtonsPlace extends StatelessWidget {
             ),
           ),
         ),
+        SizedBox(height: 30),
       ]),
     );
   }

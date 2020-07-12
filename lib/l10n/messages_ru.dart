@@ -23,10 +23,11 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "afterRegister" : MessageLookupByLibrary.simpleMessage("После регистрации вы сможете\nавторизоваться в приложении"),
     "allStepsAreConvertedIntoRublesAndGoToACharityFund" : MessageLookupByLibrary.simpleMessage("Все шаги конвертируются в рубли\nи идут в благотворительный фонд"),
-    "allStepsAreSetOff" : MessageLookupByLibrary.simpleMessage("Все шаги идут\nв зачет"),
+    "allStepsAreSetOff" : MessageLookupByLibrary.simpleMessage("Все шаги идут\nв зачёт"),
     "allTime" : MessageLookupByLibrary.simpleMessage("Весь период"),
     "auth" : MessageLookupByLibrary.simpleMessage("АВТОРИЗАЦИЯ"),
     "backToTaskList" : MessageLookupByLibrary.simpleMessage("Список задач"),
+    "competitionRules" : MessageLookupByLibrary.simpleMessage("Регламент проведения конкурса"),
     "correspondent" : MessageLookupByLibrary.simpleMessage("Корреспондент"),
     "email" : MessageLookupByLibrary.simpleMessage("Email"),
     "emptyField" : MessageLookupByLibrary.simpleMessage("Поле не может быть пустым"),
@@ -47,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "passwordContainsInvalidCharacters" : MessageLookupByLibrary.simpleMessage("Пароль содержит недопустимые символы"),
     "pedometer" : MessageLookupByLibrary.simpleMessage("Шагомер"),
     "place" : MessageLookupByLibrary.simpleMessage("место"),
-    "placeInGeneralSetOff" : MessageLookupByLibrary.simpleMessage("место в общем зачете"),
+    "placeInGeneralSetOff" : MessageLookupByLibrary.simpleMessage("место в общем зачёте"),
     "processOfRegister" : MessageLookupByLibrary.simpleMessage("Процесс регистрации проходит\nна сайте: турбостарты.рф"),
     "profile" : MessageLookupByLibrary.simpleMessage("Профиль"),
     "rating" : MessageLookupByLibrary.simpleMessage("Рейтинг"),
@@ -62,10 +63,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "teamVictoryYourVictory" : MessageLookupByLibrary.simpleMessage("Победа команды —\nтвоя победа!"),
     "tenThousand" : MessageLookupByLibrary.simpleMessage("Каждые 10 000 шагов конвертируются\nв 1 рубль, а все собранные средства\nидут в благотворительный фонд поддержки\nдетей-спортсменов с ограниченными\nвозможностями."),
     "today" : MessageLookupByLibrary.simpleMessage("Сегодня"),
-    "together" : MessageLookupByLibrary.simpleMessage("Все вместе"),
+    "together" : MessageLookupByLibrary.simpleMessage("«Счастливые люди»"),
     "total" : MessageLookupByLibrary.simpleMessage("Всего"),
     "turbostarts" : MessageLookupByLibrary.simpleMessage("ТУРБО\nСТАРТЫ"),
-    "week" : MessageLookupByLibrary.simpleMessage("Неделя"),
-    "competitionRules" : MessageLookupByLibrary.simpleMessage("Регламент проведения конкурса")
+    "week" : MessageLookupByLibrary.simpleMessage("Неделя")
   };
 }

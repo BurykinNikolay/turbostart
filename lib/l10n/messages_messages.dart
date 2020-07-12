@@ -27,6 +27,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "allTime" : MessageLookupByLibrary.simpleMessage("All time"),
     "auth" : MessageLookupByLibrary.simpleMessage("Auth"),
     "backToTaskList" : MessageLookupByLibrary.simpleMessage("Back to task list"),
+    "competitionRules" : MessageLookupByLibrary.simpleMessage("Competition rules"),
     "correspondent" : MessageLookupByLibrary.simpleMessage("Correspondent"),
     "email" : MessageLookupByLibrary.simpleMessage("Email"),
     "emptyField" : MessageLookupByLibrary.simpleMessage("The field cannot be empty"),

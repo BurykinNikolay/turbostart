@@ -10,7 +10,7 @@ class AuthBackgroundMiddlePart extends StatelessWidget {
         Column(children: [
           Container(
             color: theme.white,
-            height: MediaQuery.of(context).size.width * 0.464,
+            height: MediaQuery.of(context).size.height * 0.22,
           ),
           Expanded(
             child: Container(color: theme.mainGreen),
@@ -32,7 +32,7 @@ class AuthBackgroundMiddlePart extends StatelessWidget {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: MediaQuery.of(context).size.height * 0.09),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.12),
                 Text(
                   AppLocalizations.of(context).turbostarts,
                   style: theme.boldWhite36,

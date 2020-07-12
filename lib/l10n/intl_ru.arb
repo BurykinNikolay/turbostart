@@ -75,7 +75,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "allStepsAreSetOff": "Все шаги идут\nв зачет",
+  "allStepsAreSetOff": "Все шаги идут\nв зачёт",
   "@allStepsAreSetOff": {
     "type": "text",
     "placeholders": {}
@@ -90,7 +90,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "together": "Все вместе",
+  "together": "«Счастливые люди»",
   "@together": {
     "type": "text",
     "placeholders": {}
@@ -160,7 +160,7 @@
     "type": "text",
     "placeholders": {}
   },
-  "placeInGeneralSetOff": "место в общем зачете",
+  "placeInGeneralSetOff": "место в общем зачёте",
   "@placeInGeneralSetOff": {
     "type": "text",
     "placeholders": {}
@@ -229,5 +229,5 @@
   "@competitionRules": {
     "type": "text",
     "placeholders": {}
-  },
+  }
 }
