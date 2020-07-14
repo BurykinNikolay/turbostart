@@ -1,5 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:turbostart/di/provider/store_provider.dart';
+import 'package:turbostart/feature/logger/logger.dart';
 
 import '../../app_starter.dart';
 
@@ -23,7 +24,7 @@ class PushService {
 
       // For testing purposes print the Firebase Messaging token
       String token = await _firebaseMessaging.getToken();
-      print("FirebaseMessaging token: $token");
+      logger.i("FirebaseMessaging token: $token");
       _storeProvider.store.actions.login.setPushToken(token);
       _initialized = true;
     }

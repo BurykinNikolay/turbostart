@@ -43,6 +43,7 @@ class PedometerScreenBloc extends BaseBloc {
     _stepsStateSubscription = store.nextSubstate((AppState state) => state.stepsState).listen((_) async {
       _sinkPedometerState();
       _sinkStepsState();
+      _sinkChartModel();
     });
 
     _pedometerStateSubscription = store.nextSubstate((AppState state) => state.pedometerState).listen((_) async {

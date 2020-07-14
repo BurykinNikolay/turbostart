@@ -96,7 +96,7 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                                     children: [
                                       Text(localizations.today, style: theme.boldBlack25),
                                       SizedBox(height: 9),
-                                      Text("${cupertinoTabBarValue == 0 ? stepsState?.stepsUserToday : stepsState?.stepsMacroregionToday}", style: theme.boldGreen40),
+                                      Text("${cupertinoTabBarValue == 0 ? (stepsState?.stepsUserToday ?? "—" )  : (stepsState?.stepsMacroregionToday ?? "—")}", style: theme.boldGreen40),
                                     ],
                                   ),
                                 ),
@@ -107,7 +107,7 @@ class _PedometerScreenViewState extends State<PedometerScreenView> {
                                     children: [
                                       Text(localizations.total, style: theme.boldBlack25),
                                       SizedBox(height: 9),
-                                      Text("${cupertinoTabBarValue == 0 ? stepsState?.stepsUserAll : stepsState?.stepsMacroregionAll}", style: theme.boldGreen40),
+                                      Text("${cupertinoTabBarValue == 0 ? (stepsState?.stepsUserAll ?? "—" ) : (stepsState?.stepsMacroregionAll ?? "—")}", style: theme.boldGreen40),
                                     ],
                                   ),
                                 ),
