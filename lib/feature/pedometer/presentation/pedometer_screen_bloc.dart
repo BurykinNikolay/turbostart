@@ -113,19 +113,18 @@ class PedometerScreenBloc extends BaseBloc {
       case TimePeriodTypes.week:
         if (stepsData.length > 8) {
           stepsData = stepsData.getRange(0, 8).toList();
-          dateFormat = DateFormat(DateFormat.ABBR_WEEKDAY);
           interval = 1.0;
         }
+        dateFormat = DateFormat(DateFormat.ABBR_WEEKDAY);
         break;
       case TimePeriodTypes.month:
         if (stepsData.length > 30) {
           stepsData = stepsData.getRange(0, 30).toList();
-          dateFormat = DateFormat(DateFormat.ABBR_MONTH_WEEKDAY_DAY);
         }
+        dateFormat = DateFormat(DateFormat.ABBR_MONTH_WEEKDAY_DAY);
         break;
       case TimePeriodTypes.allTime:
         dateFormat = DateFormat.yMd();
-
         break;
     }
     return ChartModel(dateFormat, stepsData, interval);

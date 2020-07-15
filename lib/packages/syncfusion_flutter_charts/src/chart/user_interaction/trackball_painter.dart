@@ -411,7 +411,7 @@ class _TrackballPainter extends CustomPainter {
       yPos = y - labelRect.height / 2;
       nosePointY = labelRect.top;
       nosePointX = labelRect.left;
-      final double tooltipRightEnd = (xPos + (labelRect.width))*(1.4);
+      final double tooltipRightEnd = (xPos + (labelRect.width))*(1.6);
       if (xPos < boundaryRect.left) {
         xPos = (chart.trackballBehavior.tooltipDisplayMode ==
                     TrackballDisplayMode.groupAllPoints &&

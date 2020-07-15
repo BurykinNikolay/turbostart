@@ -37,7 +37,7 @@ class _ChartWidgetState extends State<ChartWidget> {
       builder: (context, snapshot) {
         final charModel = snapshot.data;
         return Transform.scale(
-          scale: 1.4,
+          scale: charModel.stepsData.length <= 8 ? 1.0 : 1.4,
           child: SfCartesianChart(
             trackballBehavior: TrackballBehavior(
               lineDashArray: [8, 2],
@@ -60,8 +60,8 @@ class _ChartWidgetState extends State<ChartWidget> {
             plotAreaBorderWidth: 0,
             primaryYAxis: NumericAxis(isVisible: false, edgeLabelPlacement: EdgeLabelPlacement.shift),
             primaryXAxis: DateTimeAxis(
-                rangePadding: ChartRangePadding.additional,
-                intervalType: DateTimeIntervalType.auto,
+                rangePadding: ChartRangePadding.normal,
+                intervalType: charModel.stepsData.length <= 8 ? DateTimeIntervalType.days : DateTimeIntervalType.auto,
                 interval: charModel.interval,
                 dateFormat: charModel.dateFormat,
                 isVisible: true,
