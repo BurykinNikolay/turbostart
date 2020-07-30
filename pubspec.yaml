@@ -38,8 +38,11 @@ dependencies:
   rxdart: ^0.23.1
   introduction_screen: 1.0.8
   flutter_plot:
-  path_provider: ^1.6.9
-  health: 1.0.2+2
+  path_provider: ^1.6.11
+  health:
+    git:
+      url: https://github.com/BurykinNikolay/flutter-plugins.git
+      path: packages/health
   firebase_messaging: 6.0.16
   utf:
   flutter_inappwebview: 4.0.0+4

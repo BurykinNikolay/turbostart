@@ -76,7 +76,7 @@ const TextStyle boldBlack22 = TextStyle(fontSize: 22, color: black, fontWeight: 
 const TextStyle boldBlack25 = TextStyle(fontSize: 25, color: black, fontWeight: FontWeight.w800);
 const TextStyle boldRed22 = TextStyle(fontSize: 22, color: red, fontWeight: FontWeight.w800);
 const TextStyle boldGreen20 = TextStyle(fontSize: 20, color: mainGreen, fontWeight: FontWeight.w800);
-const TextStyle boldGreen40 = TextStyle(fontSize: 40, color: mainGreen, fontWeight: FontWeight.w800);
+const TextStyle boldGreen40 = TextStyle(fontSize: 30, color: mainGreen, fontWeight: FontWeight.w800);
 const TextStyle boldGray20 = TextStyle(fontSize: 20, color: gray, fontWeight: FontWeight.w800);
 
 const TextStyle lightGreen16 = TextStyle(fontSize: 16, color: lightGreen, fontWeight: FontWeight.w300);

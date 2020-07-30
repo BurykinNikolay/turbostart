@@ -22,6 +22,7 @@ class SendStepsEpic {
       );
     }).doOnData((sendStepsResponse) {
       logger.i("SendStepsStatus: ${sendStepsResponse.status}");
+      api.actions.health.getSteps();
     }).handleError((exception) {
       logger.e('SendStepsStatus: $exception');
     });

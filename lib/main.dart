@@ -32,7 +32,7 @@ Future<void> _run({bool useDeviceSimulator, bool useReduxRemote}) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   //set LogLevel
-  Logger.level = Level.debug;
+  Logger.level = Level.info;
 
   // after init
   await starter.startApp();

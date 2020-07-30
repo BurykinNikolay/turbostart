@@ -27,7 +27,7 @@ class LegendPlace extends StatelessWidget {
                     Column(
                       children: [
                         Text(
-                          "10 000 ",
+                          "1 000 ",
                           style: theme.boldWhite36,
                         ),
                         Text(
